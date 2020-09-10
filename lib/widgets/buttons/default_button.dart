@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
 
-import '../../res.dart';
 import '../text.dart';
 import '../widgets.dart';
 
@@ -17,6 +16,7 @@ Widget defaultButton({
   final Color color,
   final Color textColor,
   final Color strokeColor,
+  final String icon
 }) {
   return Container(
     decoration: borderNone == null ? BoxDecoration(
@@ -33,12 +33,21 @@ Widget defaultButton({
               height: height ?? blocks.horizontal(35),
               width: width ?? blocks.horizontal(84),
               child: Center(
-                child: xText(
-                  text: text,
-                  color: textColor ?? Colors.white,
-                  fontSize: scale.scaledSize(fontSize ?? 14),
-                  fontWeight: FontWeight.bold,
-                  textAlign: TextAlign.center,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    icon != null && icon.isNotEmpty
+                        ? Image.asset(icon, width: scale.scaledSize(20),)
+                        : Container(),
+                    margin(x: icon != null && icon.isNotEmpty ? 4 : 0 ),
+                    xText(
+                      text: text,
+                      color: textColor ?? Colors.white,
+                      fontSize: scale.scaledSize(fontSize ?? 14),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
                 ),
               ),
             ),

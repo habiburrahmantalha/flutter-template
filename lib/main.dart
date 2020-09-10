@@ -4,6 +4,7 @@ import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_template/values/colors.dart';
 import 'package:provider/provider.dart';
 
 import 'locator.dart';
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       navigatorKey: locator<NavigationService>().navigatorKey,
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Lato',
@@ -64,6 +66,9 @@ class _MyAppState extends State<MyApp> {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: ColorsX.accent,
+        primaryColorDark: ColorsX.accent,
+        accentColor: ColorsX.accent,
       ),
       routes: <String, WidgetBuilder>{
         SplashScreen.routeName: (ctx) => SplashScreen(),

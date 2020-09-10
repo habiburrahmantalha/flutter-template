@@ -42,13 +42,19 @@ android {
         disable 'InvalidPackage'
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.tree.flutter_template"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -60,12 +66,28 @@ android {
         }
     }
 
+    flavorDimensions "version"
+
     buildTypes {
         release {
             signingConfig signingConfigs.release
             minifyEnabled true
             useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        reed {
+            applicationId "com.tree.flutter_template"
+            resValue "string", "app_name", "Template"
+            dimension "version"
+        }
+        staging {
+            applicationId "com.tree.flutter_template.staging"
+            resValue "string", "app_name", "Template - D"
+            versionNameSuffix '.1'
+            dimension "version"
         }
     }
 }
@@ -76,4 +98,10 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-iid:20.2.1'
+    implementation 'com.android.support:multidex:1.0.3'
 }
+
+apply plugin: 'com.google.gms.google-services'

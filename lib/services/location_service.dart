@@ -14,7 +14,7 @@ class LocationService{
 
 		checkLocationService() async {
 				isServiceEnabled();
-				bool serviceEnabled = await Geolocator().isLocationServiceEnabled();
+				bool serviceEnabled = await isLocationServiceEnabled();
 				if (!serviceEnabled) {
 						serviceEnabled = await location.requestService();
 				}
@@ -25,7 +25,7 @@ class LocationService{
 		isServiceEnabled() {
 				print("// === TIMER --- isServiceEnabled === //");
 				Timer.periodic(Duration(seconds: 2), (timer) async {
-						bool serviceEnabled = await Geolocator().isLocationServiceEnabled();
+						bool serviceEnabled = await isLocationServiceEnabled();
 						if (serviceEnabled) {
 								isStopped = true;
 								timer.cancel();
