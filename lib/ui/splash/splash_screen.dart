@@ -49,8 +49,7 @@ class _SplashScreenState extends State<SplashScreen>
     scale.init(context);
     ScreenUtil.init(
       context,
-      width: BlockConfiguration.screenWidth,
-      height: BlockConfiguration.screenHeight,
+      designSize: Size( BlockConfiguration.screenWidth, BlockConfiguration.screenHeight,),
       allowFontScaling: true,
     );
   }

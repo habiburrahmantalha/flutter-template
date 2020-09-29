@@ -1,3 +1,4 @@
+import 'package:flutter_template/network/models/enum.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LoadingBloc{
@@ -24,7 +25,3 @@ class LoadingBloc{
 
 }
 final loadingBloc = LoadingBloc();
-
-enum LoadingType{
-    otp, login, tags, pranks, prank, reactions, reaction,
-}

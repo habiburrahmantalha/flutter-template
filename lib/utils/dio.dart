@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_template/utils/retry_interceptor.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'network_connectivity.dart';
 import 'objects.dart';
@@ -51,28 +52,35 @@ class DioSingleton {
     dio = new Dio(options);
 
     dio.interceptors
+      ..add(PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          error: true,
+          compact: false))
       ..add(InterceptorsWrapper(
         onRequest: (RequestOptions options) {
           networkConnectivity.checkStatus();
-          print("Dio Request");
-          print(options.headers);
-          printLarge("${options.data}");
-          print(options.contentType);
-          print(options.extra);
-          print(options.baseUrl + "" + options.path);
+          // print("Dio Request");
+          // print(options.headers);
+          // printLarge("${options.data}");
+          // print(options.contentType);
+          // print(options.extra);
+          // print(options.baseUrl + "" + options.path);
           return options;
         },
         onResponse: (Response response) {
-          print("Dio Success Response");
-          printLarge("${response.data}");
-          print(response.extra);
+          // print("Dio Success Response");
+          // printLarge("${response.data}");
+          // print(response.extra);
           return response;
         },
         onError: (DioError e) {
-          print("Dio Error Response");
-          printLarge("${e.response}");
-          print(e.message);
-          print(e.type);
+          // print("Dio Error Response");
+          // printLarge("${e.response}");
+          // print(e.message);
+          // print(e.type);
           return e;
         },
       ))
