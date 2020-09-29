@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/components/dialogs/dialog_no_Internet.dart';
+import 'package:flutter_template/widgets/dialogs/dialog_no_Internet.dart';
+
 
 import 'network_connectivity.dart';
 

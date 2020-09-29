@@ -84,7 +84,7 @@ class KWidgets {
               fontSize: scale.scaledSize(18),
               fontWeight: FontWeight.w800),
           elevation: 0.0,
-          titleSpacing: titleSpacing ?? blocks.horizontal(25),
+          titleSpacing: titleSpacing ?? blocks.size(25),
         ),
       ),
       preferredSize: Size.fromHeight(kToolbarHeight),
@@ -166,7 +166,7 @@ TextFormField prepareInputField(
 
 Widget margin({double x = 0, double y = 0}) {
   return SizedBox(
-    width: blocks.horizontal(x),
-    height: blocks.vertical(y),
+    width: blocks.size(x),
+    height: blocks.size(y),
   );
 }

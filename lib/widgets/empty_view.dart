@@ -18,14 +18,14 @@ class EmptyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(blocks.horizontal(25)),
+        padding: EdgeInsets.all(blocks.size(25)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: blocks.horizontal(150),
-              width: blocks.horizontal(250),
+              height: blocks.size(150),
+              width: blocks.size(250),
               decoration: BoxDecoration(
                   image: DecorationImage(image: AssetImage(image))),
             ),
@@ -36,7 +36,7 @@ class EmptyView extends StatelessWidget {
                 color: ColorsX.textBlack),
             margin(y: 15),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: blocks.horizontal(40)),
+              padding: EdgeInsets.symmetric(horizontal: blocks.size(40)),
               child: xText(
                   maxLine: 3,
                   textAlign: TextAlign.center,
@@ -46,7 +46,7 @@ class EmptyView extends StatelessWidget {
             ),
             margin(y: 40),
             LoaderButton(
-              height: blocks.horizontal(40),
+              height: blocks.size(40),
               label: buttonText,
               color: ColorsX.accent,
               onPressed: () {

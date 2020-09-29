@@ -1,58 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
+import 'package:flutter_template/values/constants.dart';
 
 import '../text.dart';
 import '../widgets.dart';
 
-Widget defaultButton({
-  final String text,
-  final GestureTapCallback onPressed,
-  final bool borderNone,
-  final double width,
-  final double height,
-  final double radius,
-  final double fontSize,
-  final Color color,
-  final Color textColor,
-  final Color strokeColor,
-  final String icon
-}) {
-  return Container(
-    decoration: borderNone == null ? BoxDecoration(
-        border: Border.all(color: strokeColor ?? ColorsX.accent),
-      borderRadius: BorderRadius.circular(radius ?? 40),
-    ) : null,
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(radius ?? 40),
+class DefaultButton extends StatelessWidget {
+  final String text;
+  final GestureTapCallback onPressed;
+  final double width;
+  final double height;
+  final double radius;
+  final double fontSize;
+  final Color color;
+  final Color textColor;
+  final Color strokeColor;
+  final String icon;
+  final bool disabled;
+
+  DefaultButton({Key key, this.text, this.onPressed, this.width, this.height, this.radius, this.fontSize, this.color, this.textColor, this.strokeColor, this.icon, this.disabled = false }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
       child: Material(
           color: color ?? ColorsX.accent,
-          child: InkWell(
-            onTap: onPressed,
-            child: Container(
-              height: height ?? blocks.horizontal(35),
-              width: width ?? blocks.horizontal(84),
-              child: Center(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: Opacity(
+            opacity: disabled ? 0.5 : 1,
+            child: InkWell(
+              onTap: onPressed,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: strokeColor ?? color),
+                  borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+                ),
+                height: height ?? blocks.size(35),
+                width: width ?? blocks.size(84),
+                child: Stack(
                   children: [
-                    icon != null && icon.isNotEmpty
-                        ? Image.asset(icon, width: scale.scaledSize(20),)
-                        : Container(),
-                    margin(x: icon != null && icon.isNotEmpty ? 4 : 0 ),
-                    xText(
-                      text: text,
-                      color: textColor ?? Colors.white,
-                      fontSize: scale.scaledSize(fontSize ?? 14),
-                      textAlign: TextAlign.center,
-                    )
+                    Center(
+                      child: Row(
+                        children: [
+                          margin(x:12),
+                          icon != null && icon.isNotEmpty
+                              ? Image.asset(icon, width: scale.scaledSize(20),)
+                              : Container(),
+                        ],
+                      ),
+                    ),
+
+                    Center(
+                      child: xText(
+                        text: text,
+                        color: textColor ?? Colors.white,
+                        fontSize: scale.scaledSize(fontSize ?? 14),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
           )),
-    ),
-  );
+    );
+  }
 }
 

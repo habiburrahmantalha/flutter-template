@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/res.dart';
 import 'package:flutter_template/utils/network_connectivity.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
 import 'package:flutter_template/widgets/buttons/loader_button.dart';
 import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
-
-import '../../../res.dart';
 
 class DialogNoInternet extends StatefulWidget {
   final String message;
@@ -27,22 +26,22 @@ class _DialogNoInternetState extends State<DialogNoInternet> {
         contentPadding: EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
             borderRadius:
-            BorderRadius.all(Radius.circular(blocks.horizontal(20)))),
+            BorderRadius.all(Radius.circular(blocks.size(20)))),
         backgroundColor: Colors.white,
         content: Wrap(
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
-                  top: blocks.vertical(30),
-                  bottom: blocks.vertical(30),
-                  left: blocks.horizontal(25),
-                  right: blocks.horizontal(25)),
+                  top: blocks.size(30),
+                  bottom: blocks.size(30),
+                  left: blocks.size(25),
+                  right: blocks.size(25)),
               child: Column(
                 children: <Widget>[
                   margin(y: 10),
                   Container(
-                    height: blocks.horizontal(106),
-                    width: blocks.horizontal(214),
+                    height: blocks.size(106),
+                    width: blocks.size(214),
                     decoration: BoxDecoration(
                         image: DecorationImage(image: AssetImage(Res.ic_circular_fb))),
                   ),
@@ -59,8 +58,8 @@ class _DialogNoInternetState extends State<DialogNoInternet> {
 
                   LoaderButton(
                     label: "Retry",
-                    height: blocks.vertical(40),
-                    width: blocks.horizontal(190),
+                    height: blocks.size(40),
+                    width: blocks.size(190),
                     color: ColorsX.accent,
                     isLoading: _isLoading,
                     onPressed: () {

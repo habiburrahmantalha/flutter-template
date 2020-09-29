@@ -34,13 +34,8 @@ class BlockConfiguration {
     print(blockSizeVertical);
   }
 
-  double horizontal(double blocks) {
+  double size(double blocks) {
     return blockSizeHorizontal * blocks * getX();
-  }
-
-  double vertical(double blocks) {
-    return blockSizeHorizontal * blocks * getX();
-    //return blockSizeVertical * blocks * 0.12;
   }
 
   num getX() {

@@ -21,16 +21,16 @@ class DialogWarning extends StatelessWidget {
         contentPadding: EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
             borderRadius:
-            BorderRadius.all(Radius.circular(blocks.horizontal(20)))),
+            BorderRadius.all(Radius.circular(blocks.size(20)))),
         backgroundColor: Colors.white,
         content: Wrap(
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
-                  top: blocks.vertical(title != null ? 30 : 0),
-                  bottom: blocks.vertical(30),
-                  left: blocks.horizontal(25),
-                  right: blocks.horizontal(25)),
+                  top: blocks.size(title != null ? 30 : 0),
+                  bottom: blocks.size(30),
+                  left: blocks.size(25),
+                  right: blocks.size(25)),
               child: Column(
                 children: <Widget>[
                   xText(
@@ -47,9 +47,9 @@ class DialogWarning extends StatelessWidget {
                         fontSize: scale.scaledSize(18)),
                   ),
                   margin(y: hideButton == true ? 0:  35),
-                  hideButton == true ? Container(): defaultButton(
-                    height: blocks.vertical(30),
-                    width: blocks.horizontal(131),
+                  hideButton == true ? Container(): DefaultButton(
+                    height: blocks.size(30),
+                    width: blocks.size(131),
                     text: buttonText ?? 'Dismiss',
                     color: ColorsX.accent,
                     onPressed: () {

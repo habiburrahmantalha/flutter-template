@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
+import 'package:flutter_template/values/constants.dart';
 
 import '../text.dart';
 import '../widgets.dart';
@@ -47,37 +49,60 @@ class _LoaderButtonState extends State<LoaderButton> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(40),
+      borderRadius: BorderRadius.circular(Values.buttonRadius()),
       child: Material(
           color: widget.isEnabled ? widget.color : ColorsX.buttonDisable,
           child: InkWell(
             onTap: widget.isLoading || !widget.isEnabled? () {} : widget.onPressed,
-            child: Container(
-                decoration: BoxDecoration(border: Border.all(color: widget.borderColor, width: 2,), borderRadius: BorderRadius.circular(40)),
-                padding: EdgeInsets.symmetric(horizontal: blocks.horizontal(10)),
-                height: widget.height ?? blocks.horizontal(45),
-                width: widget.width ?? double.infinity,
-                child: Row(
-                  children: <Widget>[
-                      widget.icon != null && widget.icon.isNotEmpty
-                          ? Image.asset(widget.icon, width: scale.scaledSize(24),)
-                          : Container(width: blocks.horizontal(24),),
-                    Expanded(
-                        child: Padding(
-                          padding:  EdgeInsets.only(left: blocks.horizontal(0)),
-                          child: xText(
-                            text: widget.label,
-                            color: widget.textColor,
-                            fontSize: scale.scaledSize(16),
-                            fontWeight: FontWeight.w400,
-                            textAlign: TextAlign.center,
+            child: Opacity(
+                opacity: widget.isLoading ? 0.5: 1.0,
+              child: Container(
+                  decoration: BoxDecoration(border: Border.all(color: widget.borderColor, width: 1,), borderRadius: BorderRadius.circular(Values.buttonRadius())),
+                  padding: EdgeInsets.symmetric(horizontal: blocks.size(12)),
+                  height: widget.height ?? blocks.size(40),
+                  width: widget.width ?? double.infinity,
+                  child: Stack(
+                      children: [
+                          Center(
+                              child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                      margin(x:12),
+                                      widget.icon != null && widget.icon.isNotEmpty
+                                          ? Image.asset(widget.icon, width: scale.scaledSize(24),)
+                                          : Container(width: blocks.size(24),),
+                                  ],
+                              ),
                           ),
-                        )),
-                    widget.isLoading
-                        ? LoadingIndicator()
-                        : Container(width: blocks.horizontal(24),)
-                  ],
-                )),
+                          Center(
+                            child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                    xText(
+                                        text: widget.label,
+                                        color: widget.textColor,
+                                        fontSize: scale.scaledSize(16),
+                                        fontWeight: FontWeight.w400,
+                                        textAlign: TextAlign.center,
+                                    ),
+                                ],
+                            ),
+                          ),
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                  widget.isLoading
+                                      ? LoadingIndicator()
+                                      : Container(width: blocks.size(24),)
+                              ],
+                          )
+                      ],
+                  )
+              ),
+            ),
           )),
     );
   }

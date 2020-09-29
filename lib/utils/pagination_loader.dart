@@ -9,7 +9,7 @@ class PaginationLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(blocks.horizontal(24)),
+      padding: EdgeInsets.all(blocks.size(24)),
       child: Center(
         child: SizedBox(
             width: 24,

@@ -27,16 +27,16 @@ class DialogConfirmation extends StatelessWidget {
         contentPadding: EdgeInsets.all(0),
         shape: RoundedRectangleBorder(
             borderRadius:
-                BorderRadius.all(Radius.circular(blocks.horizontal(20)))),
+                BorderRadius.all(Radius.circular(blocks.size(20)))),
         backgroundColor: Colors.white,
         content: Wrap(
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
-                  top: blocks.vertical(title != null ? 30 : 0),
-                  bottom: blocks.vertical(30),
-                  left: blocks.horizontal(25),
-                  right: blocks.horizontal(25)),
+                  top: blocks.size(title != null ? 30 : 0),
+                  bottom: blocks.size(30),
+                  left: blocks.size(25),
+                  right: blocks.size(25)),
               child: Center(
                 child: Column(
                   children: <Widget>[
@@ -58,9 +58,9 @@ class DialogConfirmation extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Expanded(
-                          child: defaultButton(
+                          child: DefaultButton(
                               text: 'Cancel',
-                              height: blocks.vertical(30),
+                              height: blocks.size(30),
                               color: Colors.white,
                               strokeColor: ColorsX.accent,
                               textColor: ColorsX.accent,
@@ -74,8 +74,8 @@ class DialogConfirmation extends StatelessWidget {
                         ),
                         margin(x: 10),
                         Expanded(
-                          child: defaultButton(
-                              height: blocks.vertical(30),
+                          child: DefaultButton(
+                              height: blocks.size(30),
                               text: buttonText,
                               strokeColor: ColorsX.accent,
                               textColor: Colors.white,

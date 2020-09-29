@@ -33,7 +33,7 @@ class SocialButton extends StatelessWidget {
       child: InkWell(
         onTap: signUp,
         child: Container(
-            height: blocks.horizontal(30),
+            height: blocks.size(30),
             child: Image.asset(
               socialType == SocialType.google
                   ? Res.ic_circular_google
@@ -52,7 +52,7 @@ class SocialButton extends StatelessWidget {
         onTap: signUp,
         child: Container(
           padding: EdgeInsets.only(top: 8.7, bottom: 8.7),
-          height: blocks.vertical(40),
+          height: blocks.size(40),
           width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +64,7 @@ class SocialButton extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: blocks.horizontal(6)),
+                padding: EdgeInsets.only(left: blocks.size(6)),
                 child: xText(
                   text: socialType == SocialType.google ? 'Google' : 'Facebook',
                   color: socialType == SocialType.google
