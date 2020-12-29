@@ -70,7 +70,7 @@ android {
         }
     }
 
-    flavorDimensions "version"
+    //flavorDimensions "version"
 
     buildTypes {
         release {
@@ -81,19 +81,19 @@ android {
         }
     }
 
-    productFlavors {
-        reed {
-            applicationId "com.tree.flutter_template"
-            resValue "string", "app_name", "Template"
-            dimension "version"
-        }
-        staging {
-            applicationId "com.tree.flutter_template.staging"
-            resValue "string", "app_name", "Template - D"
-            versionNameSuffix '.1'
-            dimension "version"
-        }
-    }
+//    productFlavors {
+//        reed {
+//            applicationId "com.tree.flutter_template"
+//            resValue "string", "app_name", "Template"
+//            dimension "version"
+//        }
+//        staging {
+//            applicationId "com.tree.flutter_template.staging"
+//            resValue "string", "app_name", "Template - D"
+//            versionNameSuffix '.1'
+//            dimension "version"
+//        }
+//    }
 
     applicationVariants.all { variant ->
         variant.outputs.all {
