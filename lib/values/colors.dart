@@ -21,5 +21,20 @@ class ColorsX{
   static const Color buttonSocial = Color(0xffE5E5E5);
   static const Color alabaster = Color(0xffF7F7F7);
 
+  static const darkGreyBlue = const Color(0xff293452);
+  static const darkBlueGrey = const Color(0xff161f36);
+  static const black0 = const Color(0x00020202);
+  static const coolGrey = const Color(0xff8c9ba5);
+  static const watermelon = const Color(0xfff84a67);
+  static const black = const Color(0xff212121);
+  static const white = const Color(0xffffffff);
+  static const blueyGrey = const Color(0xff8f98ac);
+  static const blackTwo = const Color(0xff000000);
+  static const dodgerBlue = const Color(0xff3383fc);
+  static const lightBlueGrey = const Color(0xffcdd6dc);
+  static const darkGreyBlueTwo = const Color(0xff293a4e);
+  static const lightGreyBlue = const Color(0xffb3bec5);
+  static const cerulean = const Color(0xff00a2da);
+
 
 }

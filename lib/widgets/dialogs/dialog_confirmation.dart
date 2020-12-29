@@ -43,7 +43,7 @@ class DialogConfirmation extends StatelessWidget {
                     xText(
                         text: title ?? "",
                         color: titleColor ?? ColorsX.textBlack,
-                        fontSize: scale.scaledSize(24)),
+                        fontSize: scale.size(24)),
                     margin(y: 20),
                     Container(
                       width: blocks.getWidth(),
@@ -51,7 +51,7 @@ class DialogConfirmation extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: message,
                           color: ColorsX.textGrey,
-                          fontSize: scale.scaledSize(18)),
+                          fontSize: scale.size(18)),
                     ),
                     margin(y: 35),
                     Row(

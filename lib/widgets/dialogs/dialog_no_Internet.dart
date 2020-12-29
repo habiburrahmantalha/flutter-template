@@ -52,7 +52,7 @@ class _DialogNoInternetState extends State<DialogNoInternet> {
                         textAlign: TextAlign.center,
                         text: widget.message,
                         color: ColorsX.textGrey,
-                        fontSize: scale.scaledSize(18)),
+                        fontSize: scale.size(18)),
                   ),
                   margin(y: 30),
 

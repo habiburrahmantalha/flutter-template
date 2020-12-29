@@ -60,7 +60,7 @@ class ScalingConfiguration {
     _mediaQueryData = MediaQuery.of(context);
   }
 
-  double scaledSize(double size) {
+  double size(double size) {
     var deviceType = getDeviceType(_mediaQueryData.size);
     switch (deviceType) {
       case DeviceScreenType.mobile:

@@ -45,7 +45,7 @@ class DefaultButton extends StatelessWidget {
                         children: [
                           margin(x:12),
                           icon != null && icon.isNotEmpty
-                              ? Image.asset(icon, width: scale.scaledSize(20),)
+                              ? Image.asset(icon, width: scale.size(20),)
                               : Container(),
                         ],
                       ),
@@ -55,7 +55,7 @@ class DefaultButton extends StatelessWidget {
                       child: xText(
                         text: text,
                         color: textColor ?? Colors.white,
-                        fontSize: scale.scaledSize(fontSize ?? 14),
+                        fontSize: scale.size(fontSize ?? 14),
                         textAlign: TextAlign.center,
                       ),
                     ),

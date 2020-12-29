@@ -70,7 +70,7 @@ class _LoaderButtonState extends State<LoaderButton> {
                                   children: <Widget>[
                                       margin(x:12),
                                       widget.icon != null && widget.icon.isNotEmpty
-                                          ? Image.asset(widget.icon, width: scale.scaledSize(24),)
+                                          ? Image.asset(widget.icon, width: scale.size(24),)
                                           : Container(width: blocks.size(24),),
                                   ],
                               ),
@@ -83,7 +83,7 @@ class _LoaderButtonState extends State<LoaderButton> {
                                     xText(
                                         text: widget.label,
                                         color: widget.textColor,
-                                        fontSize: scale.scaledSize(16),
+                                        fontSize: scale.size(16),
                                         fontWeight: FontWeight.w400,
                                         textAlign: TextAlign.center,
                                     ),

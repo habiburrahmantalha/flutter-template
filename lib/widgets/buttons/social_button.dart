@@ -70,7 +70,7 @@ class SocialButton extends StatelessWidget {
                   color: socialType == SocialType.google
                       ? ColorsX.error
                       : ColorsX.textFb,
-                  fontSize: scale.scaledSize(14),
+                  fontSize: scale.size(14),
                   textAlign: TextAlign.center,
                 ),
               ),

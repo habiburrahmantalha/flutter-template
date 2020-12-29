@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_template/fcm/push_nofitications.dart';
+import 'package:flutter_template/main.dart';
 import 'package:flutter_template/network/models/enum.dart';
 import 'package:flutter_template/utils/network_connectivity_mixin.dart';
 import 'package:flutter_template/utils/objects.dart';
@@ -13,8 +14,6 @@ import 'package:flutter_template/utils/size_config.dart';
 import 'package:flutter_template/values/constants.dart';
 import 'package:flutter_template/widgets/text.dart';
 import 'package:package_info/package_info.dart';
-
-import '../../main.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +25,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with NetworkConnectivityMixin<SplashScreen>, RouteAware {
+    with NetworkConnectivityMixin<SplashScreen> {
 
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
 
@@ -39,7 +38,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void didChangeDependencies() {
-    routeObserver.subscribe(this, ModalRoute.of(context));
     setBlockConfig();
     super.didChangeDependencies();
   }
@@ -47,11 +45,9 @@ class _SplashScreenState extends State<SplashScreen>
   void setBlockConfig() {
     blocks.init(context);
     scale.init(context);
-    ScreenUtil.init(
-      context,
-      designSize: Size( BlockConfiguration.screenWidth, BlockConfiguration.screenHeight,),
-      allowFontScaling: true,
-    );
+    ScreenUtil.init(BoxConstraints(
+      maxWidth: BlockConfiguration.screenWidth,
+      maxHeight: BlockConfiguration.screenHeight,), allowFontScaling: false);
   }
 
   @override
@@ -119,17 +115,8 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void dispose() {
     SplashScreen.pushNotification = null;
-    routeObserver.unsubscribe(this);
     super.dispose();
   }
 
-  @override
-  void didPush() {
-    print('didPush ${SplashScreen.routeName}');
-  }
 
-  @override
-  void didPopNext() {
-    print('didPopNext ${SplashScreen.routeName}');
-  }
 }

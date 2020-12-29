@@ -19,7 +19,7 @@ class KWidgets {
             ? IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: scale.scaledSize(22),
+            size: scale.size(22),
             color: ColorsX.accent,
           ),
           onPressed: () {
@@ -39,7 +39,7 @@ class KWidgets {
             text: title,
             color: ColorsX.accent,
             softWrap: true,
-            fontSize: scale.scaledSize(18),
+            fontSize: scale.size(18),
             fontWeight: FontWeight.w700),
         titleSpacing: 0,
         elevation: elevation ?? 1.0,
@@ -65,7 +65,7 @@ class KWidgets {
               ? IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
-                size: scale.scaledSize(22),
+                size: scale.size(22),
                 color: ColorsX.accent,
               ),
               onPressed: () {
@@ -81,7 +81,7 @@ class KWidgets {
           title: xText(
               text: title,
               color: ColorsX.accent,
-              fontSize: scale.scaledSize(18),
+              fontSize: scale.size(18),
               fontWeight: FontWeight.w800),
           elevation: 0.0,
           titleSpacing: titleSpacing ?? blocks.size(25),
@@ -123,8 +123,8 @@ class LoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new SizedBox(
-      height: scale.scaledSize(size),
-      width: scale.scaledSize(size),
+      height: scale.size(size),
+      width: scale.size(size),
       child: new CircularProgressIndicator(
         backgroundColor: ColorsX.accent,
         valueColor: new AlwaysStoppedAnimation<Color>(color),
@@ -143,7 +143,7 @@ TextFormField prepareInputField(
       cursorColor: ColorsX.textGrey,
       style: TextStyle(
           color: ColorsX.textBlack,
-          fontSize: scale.scaledSize(14),
+          fontSize: scale.size(14),
           fontWeight: FontWeight.w500,
           fontStyle: FontStyle.normal),
       decoration: InputDecoration(
@@ -158,7 +158,7 @@ TextFormField prepareInputField(
         ),
         hintText: hintText,
         hintStyle:
-            TextStyle(color: ColorsX.textHint, fontSize: scale.scaledSize(14)),
+            TextStyle(color: ColorsX.textHint, fontSize: scale.size(14)),
       ),
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted);
