@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/widgets/dialogs/dialog_no_Internet.dart';
 
-
 import 'network_connectivity.dart';
 
 mixin NetworkConnectivityMixin<T extends StatefulWidget> on State<T> {

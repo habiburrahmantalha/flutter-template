@@ -15,4 +15,11 @@ class Values{
   static bool isStaging() => true;
 }
 
+class Constant{
+
+  static String user = "user";
+  static String token = "token";
+
+}
+
 

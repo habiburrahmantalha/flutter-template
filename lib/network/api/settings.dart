@@ -11,4 +11,7 @@ class SettingsApi {
 //						return null;
 //				}
 //		}
+//   Future<ResponseSettings> getSettings() async {
+//     Response response = await getHttp(Endpoints.getSettings());
+//     return ResponseSettings.fromJson(response.data);
 }

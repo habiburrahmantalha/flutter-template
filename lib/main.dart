@@ -6,6 +6,15 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_template/ui/about/about_screen.dart';
+import 'package:flutter_template/ui/complete_profile/complete_profile_screen.dart';
+import 'package:flutter_template/ui/dashboard/dashboard_screen.dart';
+import 'package:flutter_template/ui/forgot_password/forgot_password_screen.dart';
+import 'package:flutter_template/ui/login/login_screen.dart';
+import 'package:flutter_template/ui/profile/ProfileScreen.dart';
+import 'package:flutter_template/ui/profile/change_password_screen.dart';
+import 'package:flutter_template/ui/sign_up/sign_up_screen.dart';
+import 'package:flutter_template/ui/start/start_screen.dart';
 import 'package:flutter_template/utils/dio.dart';
 import 'package:flutter_template/utils/disable_scroll_glow.dart';
 import 'package:flutter_template/utils/network_connectivity.dart';
@@ -99,9 +108,15 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: <String, WidgetBuilder>{
         SplashScreen.routeName: (ctx) => SplashScreen(),
-//        LoginScreen.routeName: (ctx) => LoginScreen(),
-//        OtpScreen.routeName: (ctx) => OtpScreen(),
-//        DashboardScreen.routeName: (ctx) => DashboardScreen(),
+        StartScreen.routeName: (ctx) => StartScreen(),
+        LoginScreen.routeName: (ctx) => LoginScreen(),
+        ForgotPasswordScreen.routeName: (ctx) => ForgotPasswordScreen(),
+        CompleteProfileScreen.routeName: (ctx) => CompleteProfileScreen(),
+        SignUpScreen.routeName: (ctx) => SignUpScreen(),
+        DashboardScreen.routeName: (ctx) => DashboardScreen(),
+        AboutScreen.routeName: (ctx) => AboutScreen(),
+        ProfileScreen.routeName: (ctx) => ProfileScreen(),
+        ChangePasswordScreen.routeName: (ctx) => ChangePasswordScreen()
       },
       home: SplashScreen(),
       navigatorObservers: [RouteObserverX()],

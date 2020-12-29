@@ -6,7 +6,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'network_connectivity.dart';
 import 'objects.dart';
-import 'utils.dart';
 
 class DioSingleton {
   static const String BASE_URL_DEBUG = "http://--/api/v1/";

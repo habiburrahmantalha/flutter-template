@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_template/fcm/push_nofitications.dart';
-import 'package:flutter_template/main.dart';
 import 'package:flutter_template/network/models/enum.dart';
+import 'package:flutter_template/ui/start/start_screen.dart';
 import 'package:flutter_template/utils/network_connectivity_mixin.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/utils/sharedpreference.dart';
@@ -34,6 +34,10 @@ class _SplashScreenState extends State<SplashScreen>
     _initPlatformState();
     _getAppVersion();
     super.initState();
+    Future.delayed(Duration(milliseconds: 2000)).then((_) {
+      Navigator.pushReplacementNamed(context, StartScreen.routeName);
+    });
+
   }
 
   @override
@@ -59,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   startTimer() {
     Future.delayed(Duration(milliseconds: 2000)).then((_) {
-
+      Navigator.pushReplacementNamed(context, StartScreen.routeName);
     });
   }
 

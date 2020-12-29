@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_template/network/models/enum.dart';
-
 import 'package:rxdart/rxdart.dart';
 import 'package:tuple/tuple.dart';
 
