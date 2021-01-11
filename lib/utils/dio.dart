@@ -75,7 +75,7 @@ class DioSingleton {
           // print(response.extra);
           return response;
         },
-        onError: (DioError e) {
+        onError: (DioError e) async{
           // print("Dio Error Response");
           // printLarge("${e.response}");
           // print(e.message);

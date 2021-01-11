@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:apple_sign_in/apple_sign_in.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -41,29 +42,33 @@ void main() async {
   }, (error, stackTrace){
     print('runZonedGuarded: Caught error in my root zone.');
     FirebaseCrashlytics.instance.recordError(error, stackTrace);
-
   });
 }
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 final globalScaffoldKey = GlobalKey<ScaffoldState>();
 
+
+final _kShouldTestAsyncErrorOnInit = false;
+final _kTestingCrashlytics = true;
+
 class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
+
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
+  FirebaseAnalytics analytics = FirebaseAnalytics();
   @override
   void initState() {
     super.initState();
 
-    _initCrashlytics();
     DioSingleton.instance.create();
     SharedPreferenceManager.instance.create();
     networkConnectivity.initialise();
+    _initializeFlutterFireFuture = _initializeFlutterFire();
   }
 
   @override
@@ -123,9 +128,12 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  final _kTestingCrashlytics = true;
-// Define an async function to initialize FlutterFire
-  Future<void> _initCrashlytics() async {
+  Future<void> _initializeFlutterFireFuture;
+  // Define an async function to initialize FlutterFire
+  Future<void> _initializeFlutterFire() async {
+    // Wait for Firebase to initialize
+    await Firebase.initializeApp();
+
     if (_kTestingCrashlytics) {
       // Force enable crashlytics collection enabled if we're testing it.
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
@@ -143,6 +151,16 @@ class _MyAppState extends State<MyApp> {
       // Forward to original handler.
       originalOnError(errorDetails);
     };
+
+    if (_kShouldTestAsyncErrorOnInit) {
+      await _testAsyncErrorOnInit();
+    }
+  }
+  Future<void> _testAsyncErrorOnInit() async {
+    Future<void>.delayed(const Duration(seconds: 2), () {
+      final List<int> list = <int>[];
+      print(list[100]);
+    });
   }
 
 }
