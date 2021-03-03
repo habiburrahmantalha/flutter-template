@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/fcm/push_nofitications.dart';
 import 'package:flutter_template/network/models/enum.dart';
 import 'package:flutter_template/ui/start/start_screen.dart';

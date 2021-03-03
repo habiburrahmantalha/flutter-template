@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_template/network/blocs/auth.dart';
 import 'package:flutter_template/ui/dashboard/dashboard_screen.dart';
 import 'package:flutter_template/ui/login/login_screen.dart';
