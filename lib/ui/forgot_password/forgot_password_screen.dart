@@ -9,7 +9,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   static const routeName = '/forgot_password';
-  ForgotPasswordScreen({Key key}) : super(key: key);
+  ForgotPasswordScreen({Key? key}) : super(key: key);
 
   @override
   _ForgotPasswordScreenState createState() {
@@ -66,7 +66,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         // });
                       },
                       validator: (v) {
-                        if (!v.isEmptyOrNull && !v.isValidEmail) {
+                        if (v == null || !v.isValidEmail) {
                           return "Please insert valid email";
                         } else
                           return null;

@@ -1,8 +1,8 @@
 class User {
-  String id;
-  String fullName;
-  String email;
-  String createdAt;
+  String? id;
+  String? fullName;
+  String? email;
+  String? createdAt;
 
   User({this.id, this.fullName, this.email, this.createdAt});
 

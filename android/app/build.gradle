@@ -34,8 +34,8 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 30
-    ndkVersion "21.3.6528147"
+    compileSdkVersion 29
+    ndkVersion "22.0.7026061"
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -113,10 +113,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
-    implementation 'com.google.firebase:firebase-messaging:20.2.1'
-
-    implementation 'com.google.firebase:firebase-iid:20.2.1'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    implementation 'com.google.firebase:firebase-iid:21.0.1'
     implementation 'com.android.support:multidex:1.0.3'
 }
 
-
+apply plugin: 'com.google.gms.google-services'

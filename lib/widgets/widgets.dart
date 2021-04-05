@@ -8,11 +8,11 @@ import 'text.dart';
 
 class KWidgets {
   static Widget appBar(
-      {BuildContext context,
-      String title,
-      bool showBack,
-      double elevation,
-      bool checkCanPop}) {
+      {BuildContext? context,
+      String? title,
+      required bool showBack,
+      double? elevation,
+      bool? checkCanPop}) {
     return PreferredSize(
       child: AppBar(
         leading: showBack
@@ -23,8 +23,8 @@ class KWidgets {
             color: ColorsX.accent,
           ),
           onPressed: () {
-            if (checkCanPop == true || Navigator.canPop(context))
-              Navigator.pop(context, true);
+            if (checkCanPop == true || Navigator.canPop(context!))
+              Navigator.pop(context!, true);
             else {
               Navigator.pushReplacementNamed(
                   context, SplashScreen.routeName);
@@ -49,7 +49,7 @@ class KWidgets {
   }
 
   static Widget mainAppBar(
-      BuildContext context, String title, bool showBack, {Function onWillPop, double titleSpacing}) {
+      BuildContext context, String title, bool showBack, {Function? onWillPop, double? titleSpacing}) {
     return PreferredSize(
       child:  Container(
         decoration: BoxDecoration(boxShadow: [
@@ -117,7 +117,7 @@ class LoadingIndicator extends StatelessWidget {
   final double size;
   final Color color;
 
-  LoadingIndicator({Key key, this.size = 24.0, this.color = Colors.white})
+  LoadingIndicator({Key? key, this.size = 24.0, this.color = Colors.white})
       : super(key: key);
 
   @override

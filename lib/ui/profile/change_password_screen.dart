@@ -10,7 +10,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   static const routeName = '/change_password';
-  ChangePasswordScreen({Key key}) : super(key: key);
+  ChangePasswordScreen({Key? key}) : super(key: key);
 
   @override
   _ChangePasswordScreenState createState() {
@@ -67,7 +67,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         authBloc.setValue("current_password", value);
                       },
                       validator: (v) {
-                        if (v.length >= 6)
+                        if (v!.length >= 6)
                           return null;
                         else
                           return "Enter password";
@@ -83,7 +83,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         authBloc.setValue("new_password", value);
                       },
                       validator: (v) {
-                        if (v.length >= 6)
+                        if (v!.length >= 6)
                           return null;
                         else
                           return "Enter password";
@@ -99,7 +99,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         authBloc.setValue("new_confirm_password", value);
                       },
                       validator: (v) {
-                        if (v.length >= 6)
+                        if (v!.length >= 6)
                           return null;
                         else
                           return "Enter password";
@@ -112,10 +112,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 StreamBuilder<List<LoadingType>>(
                     stream: loadingBloc.subjectIsLoading,
                     builder: (context, isLoading) {
-                      return LoaderButton(label: "Update Password", color: ColorsX.watermelon, isLoading: isLoading.hasData && isLoading.data.contains(LoadingType.updatePassword),
+                      return LoaderButton(label: "Update Password", color: ColorsX.watermelon, isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.updatePassword),
                         onPressed: () {
-                          if (_form.currentState.validate()) {
-                            _form.currentState.save();
+                          if (_form.currentState!.validate()) {
+                            _form.currentState!.save();
                             authBloc.updatePassword();
 
                           }

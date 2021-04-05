@@ -10,20 +10,20 @@ class ErrorBloc{
 
     handleError(DioError error, ErrorType type){
         switch(error.type){
-            case DioErrorType.RESPONSE:
-                print("Exception Reactions: ${error.response} ${error.type == DioErrorType.RESPONSE} , ${error.response.statusCode}");
+            case DioErrorType.response:
+                print("Exception Reactions: ${error.response} ${error.type == DioErrorType.response} , ${error.response!.statusCode}");
                 _subjectError.sink.add(Tuple2(error, type));
                 break;
-            case DioErrorType.CANCEL:
+            case DioErrorType.cancel:
 
                 break;
-            case DioErrorType.CONNECT_TIMEOUT:
+            case DioErrorType.connectTimeout:
 
                 break;
-            case DioErrorType.RECEIVE_TIMEOUT:
+            case DioErrorType.receiveTimeout:
 
                 break;
-            case DioErrorType.SEND_TIMEOUT:
+            case DioErrorType.sendTimeout:
 
                 break;
             default:

@@ -6,12 +6,12 @@ import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
 
 class DialogConfirmation extends StatelessWidget {
-  final String title;
-  final String message;
-  final Color titleColor;
-  final String buttonText;
-  final Function function;
-  final bool popScreen;
+  final String? title;
+  final String? message;
+  final Color? titleColor;
+  final String? buttonText;
+  final Function? function;
+  final bool? popScreen;
 
   DialogConfirmation(
       {this.title,
@@ -81,7 +81,7 @@ class DialogConfirmation extends StatelessWidget {
                               textColor: Colors.white,
                               color: ColorsX.accent,
                               onPressed: () {
-                                if (function != null) function();
+                                if (function != null) function!();
                                 Navigator.pop(context);
                               }),
                         )

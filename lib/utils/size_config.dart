@@ -3,27 +3,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class BlockConfiguration {
-  static MediaQueryData _mediaQueryData;
-  static double screenWidth;
-  static double screenHeight;
-  static double screenMagnitude;
-  static double blockSizeHorizontal;
-  static double blockSizeVertical;
-  static double blockSizeMagnitude;
-  static Orientation orientation;
+  static MediaQueryData? _mediaQueryData;
+  static double? screenWidth;
+  static double? screenHeight;
+  static double? screenMagnitude;
+  static double? blockSizeHorizontal;
+  static double? blockSizeVertical;
+  static double? blockSizeMagnitude;
+  static Orientation? orientation;
 
-  double getWidth() {
+  double? getWidth() {
     return screenWidth;
   }
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
-    screenWidth = _mediaQueryData.size.width;
-    screenHeight = _mediaQueryData.size.height;
-    screenMagnitude = _mediaQueryData.size.shortestSide;
-    orientation = _mediaQueryData.orientation;
-    blockSizeHorizontal = screenWidth / 100;
-    blockSizeVertical = screenHeight / 100;
+    screenWidth = _mediaQueryData!.size.width;
+    screenHeight = _mediaQueryData!.size.height;
+    screenMagnitude = _mediaQueryData!.size.shortestSide;
+    orientation = _mediaQueryData!.orientation;
+    blockSizeHorizontal = screenWidth! / 100;
+    blockSizeVertical = screenHeight! / 100;
 
     print("BLOCKS CONFIGURE");
     print(_mediaQueryData);
@@ -35,11 +35,11 @@ class BlockConfiguration {
   }
 
   double size(double blocks) {
-    return blockSizeHorizontal * blocks * getX();
+    return blockSizeHorizontal! * blocks * getX();
   }
 
   num getX() {
-    var deviceType = getDeviceType(_mediaQueryData.size);
+    var deviceType = getDeviceType(_mediaQueryData!.size);
     var value;
     switch (deviceType) {
       case DeviceScreenType.mobile:
@@ -54,7 +54,7 @@ class BlockConfiguration {
 }
 
 class ScalingConfiguration {
-  static MediaQueryData _mediaQueryData;
+  static late MediaQueryData _mediaQueryData;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);

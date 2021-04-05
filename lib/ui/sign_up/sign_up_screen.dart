@@ -15,7 +15,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class SignUpScreen extends StatefulWidget {
 		static const routeName = '/sign_up';
-  SignUpScreen({Key key}) : super(key: key);
+  SignUpScreen({Key? key}) : super(key: key);
 
   @override
   _SignUpScreenState createState() {
@@ -76,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         authBloc.setValue("email", value);
                       },
                       validator: (v) {
-                        if (v.isEmptyOrNull || !v.isValidEmail) {
+                        if (v == null || !v.isValidEmail) {
                           return "Please insert valid email";
                         } else
                           return null;
@@ -105,8 +105,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
               LoaderButton(label: "Continue", color: ColorsX.watermelon,
                 onPressed: () {
-                  if (_form.currentState.validate()) {
-                    _form.currentState.save();
+                  if (_form.currentState!.validate()) {
+                    _form.currentState!.save();
                     Navigator.pushNamed(context, CompleteProfileScreen.routeName);
                   }
                 },

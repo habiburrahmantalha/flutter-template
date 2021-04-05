@@ -1,10 +1,10 @@
 import 'package:flutter_template/network/models/data.dart';
 
 class ResponseRegister {
-  bool error;
-  String message;
-  User user;
-  String token;
+  bool? error;
+  String? message;
+  User? user;
+  String? token;
 
   ResponseRegister({this.error, this.message, this.user, this.token});
 
@@ -20,7 +20,7 @@ class ResponseRegister {
     data['error'] = this.error;
     data['message'] = this.message;
     if (this.user != null) {
-      data['user'] = this.user.toJson();
+      data['user'] = this.user!.toJson();
     }
     data['token'] = this.token;
     return data;
@@ -28,9 +28,9 @@ class ResponseRegister {
 }
 
 class ResponseLogin {
-  bool error;
-  User user;
-  String token;
+  bool? error;
+  User? user;
+  String? token;
 
   ResponseLogin({this.error, this.user, this.token});
 
@@ -44,7 +44,7 @@ class ResponseLogin {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['error'] = this.error;
     if (this.user != null) {
-      data['user'] = this.user.toJson();
+      data['user'] = this.user!.toJson();
     }
     data['token'] = this.token;
     return data;
@@ -52,10 +52,10 @@ class ResponseLogin {
 }
 
 class ResponseHealth {
-  String status;
-  bool redis;
-  bool db;
-  String timestamp;
+  String? status;
+  bool? redis;
+  bool? db;
+  String? timestamp;
 
   ResponseHealth({this.status, this.redis, this.db, this.timestamp});
 
@@ -77,9 +77,9 @@ class ResponseHealth {
 }
 
 class ResponseUpdatePassword {
-  bool error;
-  String message;
-  User data;
+  bool? error;
+  String? message;
+  User? data;
 
   ResponseUpdatePassword({this.error, this.message, this.data});
 
@@ -94,7 +94,7 @@ class ResponseUpdatePassword {
     data['error'] = this.error;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data.toJson();
+      data['data'] = this.data!.toJson();
     }
     return data;
   }

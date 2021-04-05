@@ -8,7 +8,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile';
-  ProfileScreen({Key key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
   @override
   _ProfileScreenState createState() {

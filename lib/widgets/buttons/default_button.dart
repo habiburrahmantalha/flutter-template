@@ -7,19 +7,19 @@ import '../text.dart';
 import '../widgets.dart';
 
 class DefaultButton extends StatelessWidget {
-  final String text;
-  final GestureTapCallback onPressed;
-  final double width;
-  final double height;
-  final double radius;
-  final double fontSize;
-  final Color color;
-  final Color textColor;
-  final Color strokeColor;
-  final String icon;
+  final String? text;
+  final GestureTapCallback? onPressed;
+  final double? width;
+  final double? height;
+  final double? radius;
+  final double? fontSize;
+  final Color? color;
+  final Color? textColor;
+  final Color? strokeColor;
+  final String? icon;
   final bool disabled;
 
-  DefaultButton({Key key, this.text, this.onPressed, this.width, this.height, this.radius, this.fontSize, this.color, this.textColor, this.strokeColor, this.icon, this.disabled = false }) : super(key: key);
+  DefaultButton({Key? key, this.text, this.onPressed, this.width, this.height, this.radius, this.fontSize, this.color, this.textColor, this.strokeColor, this.icon, this.disabled = false }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class DefaultButton extends StatelessWidget {
               onTap: onPressed,
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: strokeColor ?? color),
+                  border: Border.all(color: strokeColor ?? color!),
                   borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
                 ),
                 height: height ?? blocks.size(35),
@@ -44,8 +44,8 @@ class DefaultButton extends StatelessWidget {
                       child: Row(
                         children: [
                           margin(x:12),
-                          icon != null && icon.isNotEmpty
-                              ? Image.asset(icon, width: scale.size(20),)
+                          icon != null && icon!.isNotEmpty
+                              ? Image.asset(icon!, width: scale.size(20),)
                               : Container(),
                         ],
                       ),

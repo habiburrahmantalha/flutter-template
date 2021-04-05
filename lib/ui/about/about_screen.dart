@@ -8,7 +8,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class AboutScreen extends StatefulWidget {
   static const routeName = '/about';
-  AboutScreen({Key key}) : super(key: key);
+  AboutScreen({Key? key}) : super(key: key);
 
   @override
   _AboutScreenState createState() {
