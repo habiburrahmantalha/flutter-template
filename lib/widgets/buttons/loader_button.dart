@@ -11,18 +11,18 @@ class LoaderButton extends StatefulWidget {
   final String label;
   final GestureTapCallback onPressed;
   final bool isLoading;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final bool isEnabled;
-  final Color color;
+  final Color? color;
   final Color borderColor;
   final Color textColor;
-  final String icon;
+  final String? icon;
 
   LoaderButton(
-      {Key key,
-        @required this.onPressed,
-        @required this.label,
+      {Key? key,
+        required this.onPressed,
+        required this.label,
           this.icon,
         this.isLoading = false,
         this.width,
@@ -69,8 +69,8 @@ class _LoaderButtonState extends State<LoaderButton> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: <Widget>[
                                       margin(x:12),
-                                      widget.icon != null && widget.icon.isNotEmpty
-                                          ? Image.asset(widget.icon, width: scale.size(24),)
+                                      widget.icon != null && widget.icon!.isNotEmpty
+                                          ? Image.asset(widget.icon!, width: scale.size(24),)
                                           : Container(width: blocks.size(24),),
                                   ],
                               ),

@@ -6,12 +6,12 @@ import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
 
 class DialogWarning extends StatelessWidget {
-  final String title;
-  final String message;
-  final Color titleColor;
-  final String buttonText;
-  final Function function;
-  final bool hideButton;
+  final String? title;
+  final String? message;
+  final Color? titleColor;
+  final String? buttonText;
+  final Function? function;
+  final bool? hideButton;
 
   DialogWarning({this.title, this.message, this.buttonText, this.function, this.titleColor, this.hideButton});
 
@@ -55,7 +55,7 @@ class DialogWarning extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                       if(function != null) {
-                        function();
+                        function!();
                       }
                     },
                   ),

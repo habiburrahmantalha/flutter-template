@@ -15,7 +15,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
 		static const routeName = '/login';
-  LoginScreen({Key key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() {
@@ -25,7 +25,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _form = GlobalKey<FormState>();
-  StreamSubscription _subscription;
+  StreamSubscription? _subscription;
   @override
   void initState() {
     super.initState();
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         authBloc.setValue("email", value);
                       },
                       validator: (v) {
-                        if (!v.isEmptyOrNull && !v.isValidEmail) {
+                        if (v == null || !v.isValidEmail) {
                           return "Please insert valid email";
                         } else
                           return null;
@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         authBloc.setValue("password", value);
                       },
                       validator: (v) {
-                        if (v.length >= 6)
+                        if (v!.length >= 6)
                           return null;
                         else
                           return "Enter password";
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: 24.0,
                       width: 24.0,
-                      child: Checkbox(onChanged: (bool value) {
+                      child: Checkbox(onChanged: (bool? value) {
                       }, value: false, materialTapTargetSize: MaterialTapTargetSize.padded, ),
                     ),
                     margin(x:10),
@@ -134,10 +134,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 StreamBuilder<List<LoadingType>>(
                   stream: loadingBloc.subjectIsLoading,
                   builder: (context, isLoading) {
-                    return LoaderButton(label: "Submit", color: ColorsX.watermelon, isLoading: isLoading.hasData && isLoading.data.contains(LoadingType.login),
+                    return LoaderButton(label: "Submit", color: ColorsX.watermelon, isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.login),
                       onPressed: () {
-                        if (_form.currentState.validate()) {
-                          _form.currentState.save();
+                        if (_form.currentState!.validate()) {
+                          _form.currentState!.save();
                           authBloc.login();
                         }
                       //Navigator.pushNamed(context, GetNumberModelScreen.routeName);

@@ -21,7 +21,7 @@ class SocialButton extends StatelessWidget {
       child: Material(
           color: ColorsX.buttonSocial,
           child: InkWell(
-            onTap: signUp,
+            onTap: signUp as void Function()?,
             child: _circular(),
           )),
     );
@@ -31,7 +31,7 @@ class SocialButton extends StatelessWidget {
     return Material(
       color: Colors.white,
       child: InkWell(
-        onTap: signUp,
+        onTap: signUp as void Function()?,
         child: Container(
             height: blocks.size(30),
             child: Image.asset(
@@ -49,7 +49,7 @@ class SocialButton extends StatelessWidget {
     return Material(
       color: ColorsX.buttonSocial,
       child: InkWell(
-        onTap: signUp,
+        onTap: signUp as void Function()?,
         child: Container(
           padding: EdgeInsets.only(top: 8.7, bottom: 8.7),
           height: blocks.size(40),

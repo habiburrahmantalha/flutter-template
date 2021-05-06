@@ -6,4 +6,4 @@ ScalingConfiguration scale = ScalingConfiguration();
 
 bool staging = true;
 
-String refreshToken;
+String? refreshToken;

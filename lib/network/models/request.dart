@@ -1,7 +1,7 @@
 class RequestRegister {
-  String fullName;
-  String email;
-  String password;
+  String? fullName;
+  String? email;
+  String? password;
 
   RequestRegister({this.fullName, this.email, this.password});
 
@@ -21,8 +21,8 @@ class RequestRegister {
 }
 
 class RequestLogin {
-  String email;
-  String password;
+  String? email;
+  String? password;
 
   RequestLogin({this.email, this.password});
 
@@ -40,9 +40,9 @@ class RequestLogin {
 }
 
 class RequestUpdatePassword {
-  String currentPassword;
-  String newPassword;
-  String newConfirmPassword;
+  String? currentPassword;
+  String? newPassword;
+  String? newConfirmPassword;
 
   RequestUpdatePassword(
       {this.currentPassword, this.newPassword, this.newConfirmPassword});

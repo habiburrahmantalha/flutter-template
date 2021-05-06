@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:apple_sign_in/apple_sign_in.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -33,14 +31,11 @@ void main() async {
   await Firebase.initializeApp();
   setupLocator();
 
-  final appleSignInAvailable = await AppleSignInAvailable.check();
+
   runZonedGuarded(() {
-    runApp(Provider<AppleSignInAvailable>.value(
-      value: appleSignInAvailable,
-      child: MyApp(),
-    ));
+    runApp(MyApp());
   }, (error, stackTrace){
-    print('runZonedGuarded: Caught error in my root zone.');
+    print('runZonedGuarded: Caught error in my root zone. $error');
     FirebaseCrashlytics.instance.recordError(error, stackTrace);
   });
 }
@@ -60,7 +55,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  FirebaseAnalytics analytics = FirebaseAnalytics();
+  // static FirebaseAnalytics analytics = FirebaseAnalytics();
+  // static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   void initState() {
     super.initState();
@@ -128,7 +125,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Future<void> _initializeFlutterFireFuture;
+  Future<void>? _initializeFlutterFireFuture;
   // Define an async function to initialize FlutterFire
   Future<void> _initializeFlutterFire() async {
     // Wait for Firebase to initialize
@@ -145,11 +142,11 @@ class _MyAppState extends State<MyApp> {
     }
 
     // Pass all uncaught errors to Crashlytics.
-    Function originalOnError = FlutterError.onError;
+    Function? originalOnError = FlutterError.onError;
     FlutterError.onError = (FlutterErrorDetails errorDetails) async {
       await FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
       // Forward to original handler.
-      originalOnError(errorDetails);
+      originalOnError!(errorDetails);
     };
 
     if (_kShouldTestAsyncErrorOnInit) {
@@ -168,14 +165,4 @@ class _MyAppState extends State<MyApp> {
 
 Future portrait() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-}
-
-class AppleSignInAvailable {
-  AppleSignInAvailable(this.isAvailable);
-
-  final bool isAvailable;
-
-  static Future<AppleSignInAvailable> check() async {
-    return AppleSignInAvailable(await AppleSignIn.isAvailable());
-  }
 }

@@ -27,11 +27,11 @@ class DioSingleton {
   DioSingleton._internal();
 
   static DioSingleton get instance => _singleton;
-  Dio dio;
+  late Dio dio;
 
   String tag = "API call :";
 
-  void update(String auth) {
+  void update(String? auth) {
     BaseOptions options = new BaseOptions(
       headers: {"Authorization": "Bearer $auth"},
       baseUrl: baseURL(),
@@ -58,39 +58,39 @@ class DioSingleton {
           responseHeader: false,
           error: true,
           compact: false))
-      ..add(InterceptorsWrapper(
-        onRequest: (RequestOptions options) {
-          networkConnectivity.checkStatus();
-          // print("Dio Request");
-          // print(options.headers);
-          // printLarge("${options.data}");
-          // print(options.contentType);
-          // print(options.extra);
-          // print(options.baseUrl + "" + options.path);
-          return options;
-        },
-        onResponse: (Response response) {
-          // print("Dio Success Response");
-          // printLarge("${response.data}");
-          // print(response.extra);
-          return response;
-        },
-        onError: (DioError e) async{
-          // print("Dio Error Response");
-          // printLarge("${e.response}");
-          // print(e.message);
-          // print(e.type);
-          return e;
-        },
-      ))
-      ..add(
-        RetryOnConnectionChangeInterceptor(
-          requestRetrier: DioConnectivityRequestRetrier(
-            dio: dio,
-            connectivity: Connectivity(),
-          ),
-        ),
-      )
+      // ..add(InterceptorsWrapper(
+      //   onRequest: (RequestOptions options) {
+      //     networkConnectivity.checkStatus();
+      //     // print("Dio Request");
+      //     // print(options.headers);
+      //     // printLarge("${options.data}");
+      //     // print(options.contentType);
+      //     // print(options.extra);
+      //     // print(options.baseUrl + "" + options.path);
+      //     return options;
+      //   },
+      //   onResponse: (Response response) {
+      //     // print("Dio Success Response");
+      //     // printLarge("${response.data}");
+      //     // print(response.extra);
+      //     return response;
+      //   },
+      //   onError: (DioError e) async{
+      //     // print("Dio Error Response");
+      //     // printLarge("${e.response}");
+      //     // print(e.message);
+      //     // print(e.type);
+      //     return e;
+      //   },
+      // ))
+      // ..add(
+      //   RetryOnConnectionChangeInterceptor(
+      //     requestRetrier: DioConnectivityRequestRetrier(
+      //       dio: dio,
+      //       connectivity: Connectivity(),
+      //     ),
+      //   ),
+      // )
       ..add(LogInterceptor(
         request: true,
         requestHeader: true,
@@ -100,7 +100,7 @@ class DioSingleton {
   }
 }
 
-Future postHttp(String path, {dynamic data, CancelToken cancelToken}) =>
+Future postHttp(String path, {dynamic data, CancelToken? cancelToken}) =>
     DioSingleton.instance.dio.post(path, data: data, cancelToken: cancelToken);
 
 Future putHttp(String path, [dynamic data]) =>

@@ -8,8 +8,8 @@ import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
 
 class DialogNoInternet extends StatefulWidget {
-  final String message;
-  final Function function;
+  final String? message;
+  final Function? function;
   DialogNoInternet({ this.message, this.function});
 
   @override

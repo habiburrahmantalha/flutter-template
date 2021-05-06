@@ -9,15 +9,15 @@ class DescriptionText extends StatefulWidget {
     final Color color;
     final double fontSize;
     final FontWeight fontWeight;
-    DescriptionText({@required this.text, this.length = 100, this.color = Colors.black, this.fontSize = 16, this.fontWeight = FontWeight.w500});
+    DescriptionText({required this.text, this.length = 100, this.color = Colors.black, this.fontSize = 16, this.fontWeight = FontWeight.w500});
 
     @override
     _DescriptionTextState createState() => new _DescriptionTextState();
 }
 
 class _DescriptionTextState extends State<DescriptionText> {
-    String firstHalf;
-    String secondHalf;
+    String? firstHalf;
+    late String secondHalf;
 
     bool flag = true;
 
@@ -44,7 +44,7 @@ class _DescriptionTextState extends State<DescriptionText> {
                 children: <Widget>[
                     Row(
                         children: [
-                            Expanded(child: flag ? prepareText(firstHalf) : prepareText(firstHalf + secondHalf)),
+                            Expanded(child: flag ? prepareText(firstHalf) : prepareText(firstHalf! + secondHalf)),
                         ],
                     ),
                     Container(height: 8,),
@@ -73,7 +73,7 @@ class _DescriptionTextState extends State<DescriptionText> {
         );
     }
 
-  prepareText(String text) {
+  prepareText(String? text) {
       return xText(text: text, color: widget.color);
   }
 }

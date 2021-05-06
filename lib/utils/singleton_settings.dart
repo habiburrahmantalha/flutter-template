@@ -3,7 +3,7 @@
 class SingletonSettings {
   static final SingletonSettings _singleton = new SingletonSettings._internal();
 
-  String currentScreen;
+  String? currentScreen;
 
   SingletonSettings._internal();
 
@@ -11,10 +11,10 @@ class SingletonSettings {
 
   //Settings _settings;
 
-  String _packageVersion;
-  String _deviceModel;
+  String? _packageVersion;
+  String? _deviceModel;
 
   //Settings get settings => _settings;
-  String get packageVersion => _packageVersion;
-  String get deviceModel => _deviceModel;
+  String? get packageVersion => _packageVersion;
+  String? get deviceModel => _deviceModel;
 }

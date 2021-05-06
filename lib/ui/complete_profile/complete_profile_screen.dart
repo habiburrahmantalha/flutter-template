@@ -14,7 +14,7 @@ import 'package:flutter_template/widgets/widgets.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
   static const routeName = '/complete_profile';
-  CompleteProfileScreen({Key key}) : super(key: key);
+  CompleteProfileScreen({Key? key}) : super(key: key);
 
   @override
   _CompleteProfileScreenState createState() {
@@ -84,7 +84,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                             authBloc.setValue("email", value);
                           },
                           validator: (v) {
-                            if (v.isEmptyOrNull || !v.isValidEmail) {
+                            if (v == null || !v.isValidEmail) {
                               return "Please insert valid email";
                             } else
                               return null;
@@ -108,7 +108,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                                 authBloc.setValue("first_name", value);
                               },
                               validator: (v) {
-                                if (v.isEmptyOrNull) {
+                                if (v == null || v.isEmpty) {
                                   return "Please insert first name";
                                 } else
                                   return null;
@@ -130,7 +130,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                                   authBloc.setValue("last_name", value);
                                 },
                                 validator: (v) {
-                                  if (v.isEmptyOrNull) {
+                                  if (v == null || v.isEmpty) {
                                     return "Please insert last name";
                                   } else
                                     return null;
@@ -153,7 +153,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                             authBloc.setValue("password", value);
                           },
                           validator: (v) {
-                            if (v.length >= 6)
+                            if (v!.length >= 6)
                               return null;
                             else
                               return "Enter password";
@@ -184,11 +184,11 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                       return LoaderButton(
                         label: "Create Account",
                         color: ColorsX.watermelon,
-                        isLoading: isLoading.hasData && isLoading.data.contains(LoadingType.register),
+                        isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.register),
                         onPressed: () {
                           //Navigator.pushNamed(context, GetNumberModelScreen.routeName);
-                          if (_form.currentState.validate()) {
-                            _form.currentState.save();
+                          if (_form.currentState!.validate()) {
+                            _form.currentState!.save();
                             authBloc.register();
                           }
                         },

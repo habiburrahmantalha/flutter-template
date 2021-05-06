@@ -7,7 +7,7 @@ import 'package:flutter_template/values/colors.dart';
 import 'package:flutter_template/widgets/text.dart';
 
 class SettingsScreen extends StatefulWidget {
-  SettingsScreen({Key key}) : super(key: key);
+  SettingsScreen({Key? key}) : super(key: key);
 
   @override
   _SettingsScreenState createState() {
@@ -67,7 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         title: xText(text: contents[index-1].title, color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
                         trailing: Icon(Icons.chevron_right),
                         onTap: (){
-                          Navigator.pushNamed(context, contents[index-1].to);
+                          Navigator.pushNamed(context, contents[index-1].to!);
                         },
                       );
                   }
@@ -85,9 +85,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 }
 
 class SettingsItem{
-  String title;
-  int type;
-  String to;
+  String? title;
+  int? type;
+  String? to;
 
   SettingsItem({this.title, this.type, this.to});
 }

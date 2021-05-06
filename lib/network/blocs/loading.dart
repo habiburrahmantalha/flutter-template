@@ -9,7 +9,7 @@ class LoadingBloc{
   final BehaviorSubject<List<LoadingType>> _subjectIsLoading = BehaviorSubject<List<LoadingType>>();
   BehaviorSubject<List<LoadingType>> get subjectIsLoading => _subjectIsLoading;
 
-  List<LoadingType> list = List();
+  List<LoadingType> list = [];
 
   start(LoadingType type){
     list.add(type);

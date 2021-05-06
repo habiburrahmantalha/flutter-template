@@ -6,7 +6,7 @@ import 'package:package_info/package_info.dart';
 import 'package:rxdart/rxdart.dart';
 
 class VersionInfo extends StatefulWidget {
-  VersionInfo({Key key}) : super(key: key);
+  VersionInfo({Key? key}) : super(key: key);
 
   @override
   _VersionInfoState createState() => _VersionInfoState();
@@ -29,7 +29,7 @@ class _VersionInfoState extends State<VersionInfo> {
           StreamBuilder<PackageInfo>(
             stream: versionInfoBloc.subjectPackageInfo,
             builder: (context, snapshot) {
-              return xText(text: "Version ${snapshot.hasData ? snapshot.data.version : ""}", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 14.0);
+              return xText(text: "Version ${snapshot.hasData ? snapshot.data!.version : ""}", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 14.0);
             }
           )
         ],
@@ -41,7 +41,7 @@ class _VersionInfoState extends State<VersionInfo> {
 class VersionInfoBloc{
 
   final BehaviorSubject _subjectPackageInfo = BehaviorSubject<PackageInfo>();
-  BehaviorSubject<PackageInfo> get subjectPackageInfo => _subjectPackageInfo;
+  BehaviorSubject<PackageInfo> get subjectPackageInfo => _subjectPackageInfo as BehaviorSubject<PackageInfo>;
 
   getVersion(){
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {

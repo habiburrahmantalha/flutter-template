@@ -11,13 +11,13 @@ mixin NetworkConnectivityMixin<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
-    Timer noConnectivityTimer;
+    Timer? noConnectivityTimer;
     networkConnectivity.getSubjectNetworkConnectivity.listen((value) async {
       noConnectivityTimer?.cancel();
       if (!mounted) return;
 
       if (!value &&
-          (noConnectivityTimer == null || !noConnectivityTimer.isActive)) {
+          (noConnectivityTimer == null || !noConnectivityTimer!.isActive)) {
         noConnectivityTimer =
             Timer(Duration(seconds: 3), () => _showNoInternetDialog());
       } else {
@@ -45,7 +45,7 @@ mixin NetworkConnectivityMixin<T extends StatefulWidget> on State<T> {
       context: context,
       builder: (BuildContext context) {
         return WillPopScope(
-            onWillPop: () {}, child: DialogNoInternet(message: _getText()));
+            onWillPop: () {} as Future<bool> Function()?, child: DialogNoInternet(message: _getText()));
       },
     );
   }

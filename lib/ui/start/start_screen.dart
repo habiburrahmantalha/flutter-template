@@ -33,7 +33,7 @@ class _StartScreenState extends State<StartScreen>
     with NetworkConnectivityMixin<StartScreen> {
 
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-  StreamSubscription _subscription;
+  StreamSubscription? _subscription;
 
   @override
   void initState() {

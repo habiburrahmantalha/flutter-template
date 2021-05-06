@@ -6,7 +6,7 @@ import 'package:flutter_template/values/colors.dart';
 
 class DashboardScreen extends StatefulWidget {
 		static const routeName = '/dashboard';
-  DashboardScreen({Key key}) : super(key: key);
+  DashboardScreen({Key? key}) : super(key: key);
 
   @override
   _DashboardScreenState createState() {
@@ -20,7 +20,7 @@ class _DashboardScreenState extends State<DashboardScreen> with
   bool get wantKeepAlive => true;
 
   int _selectedIndex = 0;
-  PageController _c;
+  PageController? _c;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   
   @override
@@ -74,7 +74,7 @@ class _DashboardScreenState extends State<DashboardScreen> with
           ),
         ],
         onTap: (index) {
-          this._c.animateToPage(index,
+          this._c!.animateToPage(index,
               duration: const Duration(milliseconds: 300), curve: Curves.ease);
         },
         currentIndex: _selectedIndex,

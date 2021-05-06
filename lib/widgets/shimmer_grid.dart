@@ -3,8 +3,8 @@ import 'package:flutter_template/widgets/widgets.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerGridLoading extends StatelessWidget {
-    final ShimmerCardType type;
-  ShimmerGridLoading({Key key, this.type}) : super(key: key);
+    final ShimmerCardType? type;
+  ShimmerGridLoading({Key? key, this.type}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,15 @@ class ShimmerGridLoading extends StatelessWidget {
 }
 
 class ShimmerRow extends StatelessWidget {
-    final bool top;
-    final bool bottom;
-    final ShimmerCardType type;
-  ShimmerRow({Key key, this.top, this.bottom, this.type}) : super(key: key);
+    final bool? top;
+    final bool? bottom;
+    final ShimmerCardType? type;
+  ShimmerRow({Key? key, this.top, this.bottom, this.type}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(top: top? 20: 10, bottom: bottom? 20: 10),
+        padding: EdgeInsets.only(top: top!? 20: 10, bottom: bottom!? 20: 10),
       child: Row(
           children: [
               margin(x:20),
@@ -43,8 +43,8 @@ class ShimmerRow extends StatelessWidget {
 
 
 class ShimmerItem extends StatelessWidget {
-    final ShimmerCardType type;
-  ShimmerItem({Key key, this.type}) : super(key: key);
+    final ShimmerCardType? type;
+  ShimmerItem({Key? key, this.type}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,8 @@ class ShimmerItem extends StatelessWidget {
         child: Column(
             children: [
                 Shimmer.fromColors(
-                    baseColor: Colors.grey[800],
-                    highlightColor: Colors.grey[700],
+                    baseColor: Colors.grey[800]!,
+                    highlightColor: Colors.grey[700]!,
                     enabled: true,
                   child: ClipRRect(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(4), topRight: Radius.circular(4)),
@@ -71,8 +71,8 @@ class ShimmerItem extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(8),
                     child: Shimmer.fromColors(
-                        baseColor: Colors.grey[800],
-                        highlightColor: Colors.grey[700],
+                        baseColor: Colors.grey[800]!,
+                        highlightColor: Colors.grey[700]!,
                         enabled: true,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

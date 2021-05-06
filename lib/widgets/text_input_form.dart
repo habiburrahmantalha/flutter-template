@@ -8,23 +8,23 @@ import 'package:rxdart/rxdart.dart';
 class TextInputForm extends StatefulWidget {
   final String value;
   final String title;
-  final FocusNode current;
-  final FocusNode next;
+  final FocusNode? current;
+  final FocusNode? next;
   final bool enabled;
   final bool errorText;
   final String hintText;
-  final TextInputAction action;
+  final TextInputAction? action;
   final onSaved;
   final onChanged;
-  final Function(String) validator;
+  final Function(String?)? validator;
   final TextInputType keyboardType;
   final bool paddingNone;
   final bool borderNone;
   final controller;
-  final Function onTap;
+  final Function? onTap;
 
   TextInputForm(
-      {Key key,
+      {Key? key,
       this.keyboardType = TextInputType.text,
       this.paddingNone = false,
       this.errorText = false,
@@ -85,7 +85,7 @@ class _TextInputFormState extends State<TextInputForm> {
               stream: bloc.subjectPasswordVisibility,
               builder: (context, snapshot) {
                 return TextFormField(
-                  onTap: widget.onTap,
+                  onTap: widget.onTap as void Function()?,
                   readOnly: widget.onTap != null,
                   showCursor:  widget.onTap == null,
                   cursorColor: ColorsX.textGrey,
@@ -95,7 +95,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   controller: widget.controller != null ? widget.controller : null,
                   initialValue: widget.controller == null ? widget.value : null,
                   //initialValue: widget.value,
-                  obscureText: snapshot.hasData && snapshot.data ? false : true,
+                  obscureText: snapshot.hasData && snapshot.data! ? false : true,
                   focusNode: widget.current,
                   textInputAction: widget.action,
 
@@ -134,7 +134,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   onFieldSubmitted: (term) {
                     widget.onSaved(term);
                     if(widget.current != null)
-                      widget.current.unfocus();
+                      widget.current!.unfocus();
                     if (widget.current != widget.next)
                       FocusScope.of(context).requestFocus(widget.next);
                   },
@@ -142,7 +142,7 @@ class _TextInputFormState extends State<TextInputForm> {
                   onSaved: widget.onSaved,
                   //validator: widget.validator,
                   validator: (val) {
-                    return widget.validator(val);
+                    return widget.validator!(val);
                   },
                 );
               }
@@ -156,12 +156,12 @@ class _TextInputFormState extends State<TextInputForm> {
   _getSuffixButton(AsyncSnapshot<bool> snapshot) {
     return IconButton(
         icon: Icon(
-          snapshot.hasData && snapshot.data ? Icons.visibility_off : Icons.visibility,
-          semanticLabel:  snapshot.hasData && snapshot.data ? 'hide password' : 'show password',
+          snapshot.hasData && snapshot.data! ? Icons.visibility_off : Icons.visibility,
+          semanticLabel:  snapshot.hasData && snapshot.data! ? 'hide password' : 'show password',
           color: Colors.grey,
         ),
         onPressed: () {
-          bloc.updateVisibility(!snapshot.data);
+          bloc.updateVisibility(!snapshot.data!);
         });
   }
 

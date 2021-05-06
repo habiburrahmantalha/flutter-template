@@ -16,16 +16,16 @@ class AuthBloc{
     final Map<String, dynamic> _values = {};
 
     final PublishSubject _subjectRegister = PublishSubject<ResponseRegister>();
-    PublishSubject<ResponseRegister> get subjectRegister => _subjectRegister;
+    PublishSubject<ResponseRegister> get subjectRegister => _subjectRegister as PublishSubject<ResponseRegister>;
 
     final PublishSubject _subjectLogin = PublishSubject<ResponseLogin>();
-    PublishSubject<ResponseLogin> get subjectLogin => _subjectLogin;
+    PublishSubject<ResponseLogin> get subjectLogin => _subjectLogin as PublishSubject<ResponseLogin>;
 
     final PublishSubject _subjectUpdatePassword = PublishSubject<ResponseUpdatePassword>();
-    PublishSubject<ResponseUpdatePassword> get subjectUpdatePassword => _subjectUpdatePassword;
+    PublishSubject<ResponseUpdatePassword> get subjectUpdatePassword => _subjectUpdatePassword as PublishSubject<ResponseUpdatePassword>;
 
-    final BehaviorSubject _subjectUser = BehaviorSubject<User>();
-    BehaviorSubject<User> get subjectUser => _subjectUser;
+    final BehaviorSubject _subjectUser = BehaviorSubject<User?>();
+    BehaviorSubject<User?> get subjectUser => _subjectUser as BehaviorSubject<User?>;
 
     setValue(key, value){
         _values[key] = value;
@@ -37,7 +37,7 @@ class AuthBloc{
             _subjectRegister.sink.add(value);
             _subjectUser.sink.add(value.user);
             DioSingleton.instance.update(value.token);
-            saveUserAndToken(value.token, value.user);
+            saveUserAndToken(value.token!, value.user!);
             loadingBloc.end(LoadingType.register);
         }).catchError((error) {
             // if (error.response != null) {
@@ -58,7 +58,7 @@ class AuthBloc{
             _subjectLogin.sink.add(value);
             _subjectUser.sink.add(value.user);
             DioSingleton.instance.update(value.token);
-            saveUserAndToken(value.token, value.user);
+            saveUserAndToken(value.token!, value.user!);
             loadingBloc.end(LoadingType.login);
         }).catchError((error) {
             // if (error.response != null) {
