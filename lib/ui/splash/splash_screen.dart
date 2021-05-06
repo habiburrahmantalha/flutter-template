@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen>
     scale.init(context);
     ScreenUtil.init(BoxConstraints(
       maxWidth: BlockConfiguration.screenWidth!,
-      maxHeight: BlockConfiguration.screenHeight!,), allowFontScaling: false);
+      maxHeight: BlockConfiguration.screenHeight!,));
   }
 
   @override

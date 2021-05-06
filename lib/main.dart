@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -57,8 +55,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  static FirebaseAnalytics analytics = FirebaseAnalytics();
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  // static FirebaseAnalytics analytics = FirebaseAnalytics();
+  // static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   void initState() {
     super.initState();
@@ -122,7 +121,7 @@ class _MyAppState extends State<MyApp> {
         ChangePasswordScreen.routeName: (ctx) => ChangePasswordScreen()
       },
       home: SplashScreen(),
-      navigatorObservers: [RouteObserverX(), observer],
+      navigatorObservers: [RouteObserverX()],
     );
   }
 
