@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/imports.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
-import 'package:flutter_template/widgets/buttons/default_button.dart';
 import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
 
@@ -33,25 +33,24 @@ class DialogWarning extends StatelessWidget {
                   right: blocks.size(25)),
               child: Column(
                 children: <Widget>[
-                  xText(
+                  TextX(
                       text: title ?? "",
                       color: titleColor ?? ColorsX.textBlack,
                       fontSize: scale.size(24)),
                   margin(y: 20),
                   Container(
                     width: blocks.getWidth(),
-                    child: xText(
+                    child: TextX(
                         textAlign: TextAlign.center,
                         text: message,
                         color: ColorsX.textGrey,
                         fontSize: scale.size(18)),
                   ),
                   margin(y: hideButton == true ? 0:  35),
-                  hideButton == true ? Container(): DefaultButton(
+                  hideButton == true ? Container(): LoaderButton(
                     height: blocks.size(30),
                     width: blocks.size(131),
-                    text: buttonText ?? 'Dismiss',
-                    color: ColorsX.accent,
+                    label: buttonText ?? 'Dismiss',
                     onPressed: () {
                       Navigator.pop(context);
                       if(function != null) {

@@ -29,7 +29,7 @@ class _VersionInfoState extends State<VersionInfo> {
           StreamBuilder<PackageInfo>(
             stream: versionInfoBloc.subjectPackageInfo,
             builder: (context, snapshot) {
-              return xText(text: "Version ${snapshot.hasData ? snapshot.data!.version : ""}", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 14.0);
+              return TextX(text: "Version ${snapshot.hasData ? snapshot.data!.version : ""}", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 14.0);
             }
           )
         ],

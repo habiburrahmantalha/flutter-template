@@ -3,7 +3,10 @@ class Endpoints {
 
 
   static String register() => "user/register";
-  static String login() => "user/login";
+  static String login() => "Authenticate";
+  static String refresh() => "RefreshToken";
+  static String deposit() => "Deposit/GetBankAccounts";
+
   static String logout() => "user/logout";
   static String detail() => "user/detail";
   static String refreshToken() => "user/refresh-token";

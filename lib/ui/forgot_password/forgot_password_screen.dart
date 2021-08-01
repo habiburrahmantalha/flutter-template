@@ -45,7 +45,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             child: Column(
               children: [
                 margin(y:24),
-                xText(text: "Forgot password",
+                TextX(text: "Forgot password",
                     textAlign: TextAlign.center,
                     color:  ColorsX.black,
                     fontWeight: FontWeight.w700,
@@ -55,7 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 Form(key:_form, child: Column(
                   children: [
                     TextInputForm(
-                      paddingNone: true,
+
                       title: "Email Address",
                       hintText: "Enter email",
                       keyboardType: TextInputType.emailAddress,
@@ -75,7 +75,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 )),
                 margin(y:16),
 
-                LoaderButton(label: "Submit", color: ColorsX.watermelon, onPressed: () {
+                LoaderButton(label: "Submit", onPressed: () {
                   //Navigator.pushNamed(context, GetNumberModelScreen.routeName);
                 },  ),
               ],

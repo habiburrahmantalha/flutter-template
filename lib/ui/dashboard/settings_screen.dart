@@ -43,7 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: Colors.transparent,
         brightness: Brightness.light,
         elevation: 0,
-        title: xText(text: "Settings", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
+        title: TextX(text: "Settings", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
         centerTitle: true,
       ),
       body: Column(
@@ -54,8 +54,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   if(index == 0) {
                     return ListTile(
                       leading: Image.asset(Res.ic_circular_google),
-                      title: xText(text: "name", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
-                      subtitle: xText(text: "My Profile", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 14.0),
+                      title: TextX(text: "name", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
+                      subtitle: TextX(text: "My Profile", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 14.0),
                       trailing: Icon(Icons.chevron_right),
                       onTap: (){
                         Navigator.pushNamed(context, ProfileScreen.routeName);
@@ -64,7 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   }
                     else{
                       return ListTile(
-                        title: xText(text: contents[index-1].title, color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
+                        title: TextX(text: contents[index-1].title, color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
                         trailing: Icon(Icons.chevron_right),
                         onTap: (){
                           Navigator.pushNamed(context, contents[index-1].to!);

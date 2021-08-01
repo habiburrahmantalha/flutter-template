@@ -1,105 +1,130 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_template/utils/objects.dart';
-import 'package:flutter_template/values/colors.dart';
-import 'package:flutter_template/values/constants.dart';
+import 'package:flutter_template/imports.dart';
 
-import '../text.dart';
-import '../widgets.dart';
+enum DecorationType{
+  gradiant, disable
+}
 
-class LoaderButton extends StatefulWidget {
+class LoaderButton extends StatelessWidget {
   final String label;
   final GestureTapCallback onPressed;
   final bool isLoading;
   final double? width;
   final double? height;
   final bool isEnabled;
-  final Color? color;
-  final Color borderColor;
   final Color textColor;
   final String? icon;
+  final double? radius;
+  final double? verticalPadding;
+  final bool hideTextOnLoading;
 
   LoaderButton(
       {Key? key,
         required this.onPressed,
         required this.label,
           this.icon,
+        this.radius,
         this.isLoading = false,
         this.width,
-        this.height, this.color, this.borderColor = Colors.transparent, this.textColor = Colors.black, this.isEnabled = true})
+        this.verticalPadding,
+        this.hideTextOnLoading = false,
+        this.height, this.textColor = Colors.black, this.isEnabled = true})
       : super(key: key);
 
-  @override
-  _LoaderButtonState createState() {
-    return _LoaderButtonState();
-  }
-}
 
-class _LoaderButtonState extends State<LoaderButton> {
-  @override
-  void initState() {
-    super.initState();
+  getDecoration(bool isEnabled) {
+    DecorationType type = isEnabled ? DecorationType.gradiant : DecorationType.disable;
+    switch(type){
+      case DecorationType.gradiant:
+        return BoxDecoration(
+            borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+            gradient: LinearGradient (
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                ColorsX.primary_button_start,
+                ColorsX.primary_button_end,
+              ],
+            )
+        );
+      case DecorationType.disable:
+        return BoxDecoration(
+            borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+            color: Colors.transparent,
+            border: Border.all(width: 1, color: ColorsX.white_40)
+
+        );
+    }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  getTextColor(bool isEnabled) {
+    DecorationType type = isEnabled ? DecorationType.gradiant : DecorationType.disable;
+    switch(type){
+      case DecorationType.gradiant:
+        return Colors.white;
+      case DecorationType.disable:
+        return ColorsX.white_40;
+    }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(Values.buttonRadius()),
+      borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
       child: Material(
-          color: widget.isEnabled ? widget.color : ColorsX.buttonDisable,
+          color: Colors.transparent,
           child: InkWell(
-            onTap: widget.isLoading || !widget.isEnabled? () {} : widget.onPressed,
+            onTap: isLoading || !isEnabled? () {} : onPressed,
             child: Opacity(
-                opacity: widget.isLoading ? 0.5: 1.0,
+              opacity: isLoading ? 0.7: 1.0,
               child: Container(
-                  decoration: BoxDecoration(border: Border.all(color: widget.borderColor, width: 1,), borderRadius: BorderRadius.circular(Values.buttonRadius())),
-                  padding: EdgeInsets.symmetric(horizontal: blocks.size(12)),
-                  height: widget.height ?? blocks.size(40),
-                  width: widget.width ?? double.infinity,
+                  decoration: getDecoration(isEnabled),
+                  padding: EdgeInsets.symmetric(horizontal: blocks.size(12), vertical: blocks.size(verticalPadding ?? 12)),
+                  width: width ?? double.infinity,
+                  height: height,
                   child: Stack(
-                      children: [
-                          Center(
-                              child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                      margin(x:12),
-                                      widget.icon != null && widget.icon!.isNotEmpty
-                                          ? Image.asset(widget.icon!, width: scale.size(24),)
-                                          : Container(width: blocks.size(24),),
-                                  ],
-                              ),
-                          ),
-                          Center(
-                            child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                    xText(
-                                        text: widget.label,
-                                        color: widget.textColor,
-                                        fontSize: scale.size(16),
-                                        fontWeight: FontWeight.w400,
-                                        textAlign: TextAlign.center,
-                                    ),
-                                ],
+                    children: [
+                      hideTextOnLoading && isLoading ? SizedBox.shrink() :
+                      Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            margin(x:12),
+                            icon != null && icon!.isNotEmpty
+                                ? Image.asset(icon!, width: scale.size(24),)
+                                : Container(width: blocks.size(24),),
+                          ],
+                        ),
+                      ),
+                      hideTextOnLoading && isLoading ? SizedBox.shrink() :
+                      Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            TextX(
+                              text: label,
+                              color: getTextColor(isEnabled),
+                              fontSize: scale.size(18),
+                              fontWeight: FontWeight.w600,
+                              textAlign: TextAlign.center,
                             ),
-                          ),
-                          Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                  widget.isLoading
-                                      ? LoadingIndicator()
-                                      : Container(width: blocks.size(24),)
-                              ],
-                          )
-                      ],
+                          ],
+                        ),
+                      ),
+                      Center(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: hideTextOnLoading ? MainAxisAlignment.center : MainAxisAlignment.end,
+                          children: [
+                            isLoading
+                                ? LoadingIndicator()
+                                : Container(width: blocks.size(24),)
+                          ],
+                        ),
+                      )
+                    ],
                   )
               ),
             ),
@@ -107,5 +132,6 @@ class _LoaderButtonState extends State<LoaderButton> {
     );
   }
 }
+
 
 

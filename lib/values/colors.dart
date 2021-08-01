@@ -36,5 +36,29 @@ class ColorsX{
   static const lightGreyBlue = const Color(0xffb3bec5);
   static const cerulean = const Color(0xff00a2da);
 
+  static const Color greyFA = Color(0xffFAFAFA);
+  static const Color greyDE = Color(0xffDEDEDE);
+  static const Color greyF6 = Color(0xffF6F6F6);
+  static const Color greyF2 = Color(0xffF2F2F2);
+  static const Color greyBD = Color(0xffBDBDBD);
+  static const Color grey98 = Color(0xff989898);
+  static const Color grey4F = Color(0xff4F4F4F);
+  static const Color greyD6 = Color(0xffD6D6D6);
+  static const Color grey6B = Color(0xff6B6B6B);
+  static const Color grey33 = Color(0xff333333);
+  static const Color grey82 = Color(0xff828282);
+  static const Color grey29 = Color(0xff292929);
+  static const Color greyE0 = Color(0xffe0e0e0);
+
+  static const white_80 = const Color(0xccffffff);
+  static const white_70 = const Color(0xb3ffffff);
+  static const white_60 = const Color(0x99ffffff);
+  static const white_40 = const Color(0x66ffffff);
+  static const white_20 = const Color(0x33ffffff);
+  static const white_10 = const Color(0x1affffff);
+
+  static const primary_button_start = const Color(0xffc03bff);
+  static const primary_button_end = const Color(0xffff44f8);
+  static const secondary_button = const Color(0xffC03BFF);
 
 }

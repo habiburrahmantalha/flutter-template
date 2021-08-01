@@ -100,6 +100,59 @@ class ResponseUpdatePassword {
   }
 }
 
+class ResponseAuthentication {
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? phoneNumber;
+  String? token;
+  String? refreshToken;
+  String? issued;
+  String? expires;
+  String? status;
+  String? error;
+
+  ResponseAuthentication(
+      {this.firstName,
+        this.lastName,
+        this.email,
+        this.phoneNumber,
+        this.token,
+        this.refreshToken,
+        this.issued,
+        this.expires,
+        this.status,
+        this.error});
+
+  ResponseAuthentication.fromJson(Map<String, dynamic> json) {
+    firstName = json['firstName'];
+    lastName = json['lastName'];
+    email = json['email'];
+    phoneNumber = json['phoneNumber'];
+    token = json['token'];
+    refreshToken = json['refreshToken'];
+    issued = json['issued'];
+    expires = json['expires'];
+    status = json['status'];
+    error = json['error'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['firstName'] = this.firstName;
+    data['lastName'] = this.lastName;
+    data['email'] = this.email;
+    data['phoneNumber'] = this.phoneNumber;
+    data['token'] = this.token;
+    data['refreshToken'] = this.refreshToken;
+    data['issued'] = this.issued;
+    data['expires'] = this.expires;
+    data['status'] = this.status;
+    data['error'] = this.error;
+    return data;
+  }
+}
+
 
 
 

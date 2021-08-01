@@ -40,7 +40,7 @@ class _AboutScreenState extends State<AboutScreen> {
             icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: xText(text: "About", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
+          title: TextX(text: "About", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
           centerTitle: true,),
       body: Column(
         children: [
@@ -50,7 +50,7 @@ class _AboutScreenState extends State<AboutScreen> {
           Image.asset(Res.ic_circular_google, width: blocks.size(140),),
           Spacer(),
           VersionInfo(),
-          xText(text: "©2020 Rabbapps Inc.", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 12.0),
+          TextX(text: "©2020 Rabbapps Inc.", color: ColorsX.coolGrey, fontWeight: FontWeight.w400, fontSize: 12.0),
           margin(y: 44)
         ],
       ),

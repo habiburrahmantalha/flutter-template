@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -20,4 +21,8 @@ void showToast(String msg, BuildContext context) {
       textColor: Colors.white,
       fontSize: 16.0
   );
+
+  void printX(dynamic text) {
+    if (kDebugMode) print(text);
+  }
 }

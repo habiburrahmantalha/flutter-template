@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/fcm/push_nofitications.dart';
+import 'package:flutter_template/network/blocs/auth.dart';
 import 'package:flutter_template/network/models/enum.dart';
 import 'package:flutter_template/ui/start/start_screen.dart';
 import 'package:flutter_template/utils/network_connectivity_mixin.dart';
@@ -34,7 +35,9 @@ class _SplashScreenState extends State<SplashScreen>
     _initPlatformState();
     _getAppVersion();
     super.initState();
-    Future.delayed(Duration(milliseconds: 2000)).then((_) {
+    authBloc.auth();
+    Future.delayed(Duration(milliseconds: 5000)).then((_) {
+
       Navigator.pushReplacementNamed(context, StartScreen.routeName);
     });
 
@@ -68,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Widget prepareView() {
-    return Container(child: Center(child: xText(text: "Splash Screen")),);
+    return Container(child: Center(child: TextX(text: "Splash Screen")),);
   }
 
   void _checkUserStatus() async {

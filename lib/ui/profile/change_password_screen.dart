@@ -43,7 +43,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black),
     onPressed: () => Navigator.of(context).pop(),
     ),
-    title: xText(text: "Change Password", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
+    title: TextX(text: "Change Password", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
     centerTitle: true,
     ),
       body: Padding(
@@ -58,7 +58,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
                     margin(y:24),
                     TextInputForm(
-                      paddingNone: true,
+
                       title: "Current Password",
                       hintText: "Enter your current password",
                       keyboardType: TextInputType.visiblePassword,
@@ -74,7 +74,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       },),
                     margin(y:16),
                     TextInputForm(
-                      paddingNone: true,
+
                       title: "New Password",
                       hintText: "Enter a new password",
                       keyboardType: TextInputType.visiblePassword,
@@ -90,7 +90,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       },),
                     margin(y:16),
                     TextInputForm(
-                      paddingNone: true,
+
                       title: "Re-enter New Password",
                       hintText: "Enter the new password again",
                       keyboardType: TextInputType.visiblePassword,
@@ -107,12 +107,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ],
                 )),
                 Spacer(),
-                xText(text: "By pressing ‘Update Password’ you will be logged out from this session and need to login again.",textAlign: TextAlign.center, color: ColorsX.lightGreyBlue, fontWeight: FontWeight.w400, fontSize: 13.0),
+                TextX(text: "By pressing ‘Update Password’ you will be logged out from this session and need to login again.",textAlign: TextAlign.center, color: ColorsX.lightGreyBlue, fontWeight: FontWeight.w400, fontSize: 13.0),
                 margin(y:16),
                 StreamBuilder<List<LoadingType>>(
                     stream: loadingBloc.subjectIsLoading,
                     builder: (context, isLoading) {
-                      return LoaderButton(label: "Update Password", color: ColorsX.watermelon, isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.updatePassword),
+                      return LoaderButton(label: "Update Password", isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.updatePassword),
                         onPressed: () {
                           if (_form.currentState!.validate()) {
                             _form.currentState!.save();
