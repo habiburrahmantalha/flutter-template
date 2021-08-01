@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
-        title: xText(text: "My Profile", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
+        title: TextX(text: "My Profile", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
     centerTitle: true,
     ),
       body: Column(
@@ -51,8 +51,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ListTile(
             title: Row(
               children: [
-                Container(width: blocks.size(120),child: xText(text: "FULL NAME", color: ColorsX.coolGrey, fontWeight: FontWeight.w500, fontSize: 14.0)),
-                xText(text: "contents", color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
+                Container(width: blocks.size(120),child: TextX(text: "FULL NAME", color: ColorsX.coolGrey, fontWeight: FontWeight.w500, fontSize: 14.0)),
+                TextX(text: "contents", color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
               ],
             ),
             onTap: (){
@@ -63,8 +63,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ListTile(
             title: Row(
               children: [
-                Container(width: blocks.size(120),child: xText(text: "EMAIL ADDRESS", color: ColorsX.coolGrey, fontWeight: FontWeight.w500, fontSize: 14.0)),
-                xText(text: "contents", color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
+                Container(width: blocks.size(120),child: TextX(text: "EMAIL ADDRESS", color: ColorsX.coolGrey, fontWeight: FontWeight.w500, fontSize: 14.0)),
+                TextX(text: "contents", color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
               ],
             ),
             onTap: (){
@@ -76,8 +76,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ListTile(
             title: Row(
               children: [
-                Container(width: blocks.size(120),child: xText(text: "PASSWORD", color: ColorsX.coolGrey, fontWeight: FontWeight.w500, fontSize: 14.0)),
-                xText(text: "Change Password", color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
+                Container(width: blocks.size(120),child: TextX(text: "PASSWORD", color: ColorsX.coolGrey, fontWeight: FontWeight.w500, fontSize: 14.0)),
+                TextX(text: "Change Password", color: ColorsX.darkGreyBlue, fontWeight: FontWeight.w500, fontSize: 17.0),
               ],
             ),
             trailing: Icon(Icons.chevron_right),
@@ -90,14 +90,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Spacer(),
           Divider(height: 0,),
           ListTile(
-            leading: xText(text: "Logout", color: ColorsX.watermelon, fontWeight: FontWeight.w500, fontSize: 17.0),
+            leading: TextX(text: "Logout", color: ColorsX.watermelon, fontWeight: FontWeight.w500, fontSize: 17.0),
             onTap: (){
 
             },
           ),
           Divider(height: 0,),
           ListTile(
-            leading: xText(text: "Delete My Account", color: ColorsX.watermelon, fontWeight: FontWeight.w400, fontSize: 17.0),
+            leading: TextX(text: "Delete My Account", color: ColorsX.watermelon, fontWeight: FontWeight.w400, fontSize: 17.0),
             onTap: (){
 
             },

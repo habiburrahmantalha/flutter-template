@@ -65,7 +65,7 @@ class SocialButton extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(left: blocks.size(6)),
-                child: xText(
+                child: TextX(
                   text: socialType == SocialType.google ? 'Google' : 'Facebook',
                   color: socialType == SocialType.google
                       ? ColorsX.error

@@ -8,6 +8,9 @@ class ErrorBloc{
     final PublishSubject<Tuple2<dynamic, ErrorType>> _subjectError = PublishSubject<Tuple2<dynamic, ErrorType>>();
     PublishSubject<Tuple2<dynamic, ErrorType>> get subjectError => _subjectError;
 
+    final PublishSubject<String> _subjectErrorText = PublishSubject<String>();
+    PublishSubject<String> get subjectErrorText => _subjectErrorText;
+
     handleError(DioError error, ErrorType type){
         switch(error.type){
             case DioErrorType.response:
@@ -33,10 +36,13 @@ class ErrorBloc{
 
     }
 
-
     dispose() {
         _subjectError.close();
+        _subjectErrorText.close();
     }
 
+    showError(String text){
+        _subjectErrorText.sink.add(text);
+    }
 }
 final errorBloc = ErrorBloc();

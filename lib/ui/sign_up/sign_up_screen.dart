@@ -53,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 Image.asset(Res.ic_circular_google, width: scale.size(184),),
                 margin(y:36),
-                xText(text: "Sign up with ...",
+                TextX(text: "Sign up with ...",
                     textAlign: TextAlign.center,
                     color:  ColorsX.black,
                     fontWeight: FontWeight.w700,
@@ -64,7 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     TextInputForm(
                       errorText: true,
-                      paddingNone: true,
+
                       title: "Email Address",
                       hintText: "Enter email address",
                       keyboardType: TextInputType.emailAddress,
@@ -103,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 margin(y:12),
 
-              LoaderButton(label: "Continue", color: ColorsX.watermelon,
+              LoaderButton(label: "Continue",
                 onPressed: () {
                   if (_form.currentState!.validate()) {
                     _form.currentState!.save();
@@ -115,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    xText(text: "Already have an account? ",
+                    TextX(text: "Already have an account? ",
                         color:  ColorsX.blueyGrey,
                         fontWeight: FontWeight.w500,
                         fontSize: 14.0
@@ -125,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onTap: (){
                         Navigator.pushNamed(context, LoginScreen.routeName);
                       },
-                      child: xText(text: "Login Now",
+                      child: TextX(text: "Login Now",
                           color:  ColorsX.watermelon,
                           fontWeight: FontWeight.w600,
                           fontSize: 14.0

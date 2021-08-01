@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_template/imports.dart';
 import 'package:flutter_template/network/blocs/auth.dart';
 import 'package:flutter_template/ui/dashboard/dashboard_screen.dart';
 import 'package:flutter_template/ui/login/login_screen.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_template/res.dart';
 import 'package:flutter_template/ui/profile/change_password_screen.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
-import 'package:flutter_template/widgets/buttons/default_button.dart';
+
 import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
 import 'package:package_info/package_info.dart';
@@ -74,7 +75,7 @@ class _StartScreenState extends State<StartScreen>
         margin(y: 22),
         Container(
           width: blocks.size(202),
-          child: xText(text: "description",
+          child: TextX(text: "description",
               textAlign: TextAlign.center,
               color:  ColorsX.coolGrey,
               fontWeight: FontWeight.w500,
@@ -93,13 +94,14 @@ class _StartScreenState extends State<StartScreen>
           child: Row(
             children: [
               Expanded(
-                child: DefaultButton(text: "Sign up", color: ColorsX.watermelon, radius: 4, height: 45, onPressed: (){
-                  Navigator.pushNamed(context, SignUpScreen.routeName);
+                child: LoaderButton(label: "Sign up", radius: 4, height: 45, onPressed: (){
+                  //Navigator.pushNamed(context, SignUpScreen.routeName);
+                  authBloc.deposit();
                 } ),
               ),
               margin(x: 16),
               Expanded(
-                child: DefaultButton(text: "Log in", color: ColorsX.white, strokeColor: ColorsX.watermelon, textColor: ColorsX.watermelon, radius: 4, height: 45, onPressed: (){
+                child: LoaderButton(label: "Log in", textColor: ColorsX.watermelon, radius: 4, height: 45, onPressed: (){
                   Navigator.pushNamed(context, LoginScreen.routeName);
                 }  ),
               ),
@@ -107,7 +109,7 @@ class _StartScreenState extends State<StartScreen>
           ),
         ),
         margin(y:24),
-        xText(text: "Terms of Use  |  Privacy Policy",
+        TextX(text: "Terms of Use  |  Privacy Policy",
             textAlign: TextAlign.center,
             color:  ColorsX.coolGrey,
             fontWeight: FontWeight.w500,

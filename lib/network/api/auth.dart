@@ -23,5 +23,20 @@ class AuthApi {
         return ResponseUpdatePassword.fromJson(response.data);
     }
 
+    Future<ResponseAuthentication> auth(RequestAuth requestAuth) async {
+        Response response = await (postHttp(Endpoints.login(), data: requestAuth) as FutureOr<Response<dynamic>>);
+        return ResponseAuthentication.fromJson(response.data);
+    }
+
+
+    Future<ResponseAuthentication> refresh(RequestRefresh requestRefresh) async {
+        Response response = await (postHttp(Endpoints.refresh(), data: requestRefresh) as FutureOr<Response<dynamic>>);
+        return ResponseAuthentication.fromJson(response.data);
+    }
+
+    Future<ResponseAuthentication> deposit() async {
+        Response response = await (getHttp(Endpoints.deposit()) as FutureOr<Response<dynamic>>);
+        return ResponseAuthentication.fromJson(response.data);
+    }
 
 }

@@ -48,7 +48,7 @@ class _DialogNoInternetState extends State<DialogNoInternet> {
                   margin(y: 30),
                   Container(
                     width: blocks.getWidth(),
-                    child: xText(
+                    child: TextX(
                         textAlign: TextAlign.center,
                         text: widget.message,
                         color: ColorsX.textGrey,
@@ -60,7 +60,6 @@ class _DialogNoInternetState extends State<DialogNoInternet> {
                     label: "Retry",
                     height: blocks.size(40),
                     width: blocks.size(190),
-                    color: ColorsX.accent,
                     isLoading: _isLoading,
                     onPressed: () {
                       setState(() {

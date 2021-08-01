@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 margin(y:24),
-                xText(text: "Login to",
+                TextX(text: "Login to",
                     textAlign: TextAlign.center,
                     color:  ColorsX.black,
                     fontWeight: FontWeight.w700,
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Form(key:_form, child: Column(
                   children: [
                     TextInputForm(
-                      paddingNone: true,
+
                       title: "Email Address",
                       hintText: "Enter email",
                       keyboardType: TextInputType.emailAddress,
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },),
                     margin(y:16),
                     TextInputForm(
-                      paddingNone: true,
+
                       title: "Password",
                       hintText: "Enter password",
                       keyboardType: TextInputType.visiblePassword,
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }, value: false, materialTapTargetSize: MaterialTapTargetSize.padded, ),
                     ),
                     margin(x:10),
-                    xText(text: "Keep me logged in",
+                    TextX(text: "Keep me logged in",
                         color:  ColorsX.blueyGrey,
                         fontWeight: FontWeight.w400,
                         fontSize: 14.0
@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: (){
                         Navigator.pushNamed(context, ForgotPasswordScreen.routeName);
                       },
-                      child: xText(text: "Forgot Password?",
+                      child: TextX(text: "Forgot Password?",
                           color:  ColorsX.watermelon,
                           fontWeight: FontWeight.w500,
                           fontSize: 14.0
@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 StreamBuilder<List<LoadingType>>(
                   stream: loadingBloc.subjectIsLoading,
                   builder: (context, isLoading) {
-                    return LoaderButton(label: "Submit", color: ColorsX.watermelon, isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.login),
+                    return LoaderButton(label: "Submit", isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.login),
                       onPressed: () {
                         if (_form.currentState!.validate()) {
                           _form.currentState!.save();
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    xText(text: "New to ...?",
+                    TextX(text: "New to ...?",
                         color:  ColorsX.blueyGrey,
                         fontWeight: FontWeight.w500,
                         fontSize: 14.0
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: (){
                         Navigator.pushNamed(context, SignUpScreen.routeName);
                       },
-                      child: xText(text: "Signup Now",
+                      child: TextX(text: "Signup Now",
                           color:  ColorsX.watermelon,
                           fontWeight: FontWeight.w600,
                           fontSize: 14.0

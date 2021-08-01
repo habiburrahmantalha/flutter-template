@@ -52,7 +52,7 @@ class _DescriptionTextState extends State<DescriptionText> {
                         child: new Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                                xText(text: flag ? "see more" : "see less", color: ColorsX.accent),
+                                TextX(text: flag ? "see more" : "see less", color: ColorsX.accent),
                                 Container(width: 4,),
                                 RotatedBox(quarterTurns: flag ? 0: 90,
                                     child: Icon(
@@ -74,6 +74,6 @@ class _DescriptionTextState extends State<DescriptionText> {
     }
 
   prepareText(String? text) {
-      return xText(text: text, color: widget.color);
+      return TextX(text: text, color: widget.color);
   }
 }

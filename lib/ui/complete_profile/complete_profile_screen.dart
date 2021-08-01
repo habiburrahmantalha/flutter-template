@@ -59,7 +59,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   width: scale.size(184),
                 ),
                 margin(y: 36),
-                xText(
+                TextX(
                     text: "Complete your profile",
                     textAlign: TextAlign.center,
                     color: ColorsX.black,
@@ -72,7 +72,6 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                       children: [
                         TextInputForm(
                           errorText: true,
-                          paddingNone: true,
                           title: "Email Address",
                           hintText: "Enter email address",
                           keyboardType: TextInputType.emailAddress,
@@ -96,7 +95,6 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                             Expanded(
                                 child: TextInputForm(
                               errorText: true,
-                              paddingNone: true,
                               title: "First Name",
                               hintText: "Enter first Name",
                               keyboardType: TextInputType.emailAddress,
@@ -118,7 +116,6 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                             Expanded(
                               child: TextInputForm(
                                 errorText: true,
-                                paddingNone: true,
                                 title: "Last Name",
                                 hintText: "Enter last name",
                                 keyboardType: TextInputType.emailAddress,
@@ -141,7 +138,6 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         ),
                         margin(y: 16),
                         TextInputForm(
-                          paddingNone: true,
                           title: "Password",
                           hintText: "Enter password",
                           keyboardType: TextInputType.visiblePassword,
@@ -183,7 +179,6 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                     builder: (context, isLoading) {
                       return LoaderButton(
                         label: "Create Account",
-                        color: ColorsX.watermelon,
                         isLoading: isLoading.hasData && isLoading.data!.contains(LoadingType.register),
                         onPressed: () {
                           //Navigator.pushNamed(context, GetNumberModelScreen.routeName);
@@ -198,7 +193,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    xText(
+                    TextX(
                         text: "Already have an account? ",
                         color: ColorsX.blueyGrey,
                         fontWeight: FontWeight.w500,
@@ -208,7 +203,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, LoginScreen.routeName);
                       },
-                      child: xText(
+                      child: TextX(
                           text: "Login Now", color: ColorsX.watermelon, fontWeight: FontWeight.w600, fontSize: 14.0),
                     ),
                   ],

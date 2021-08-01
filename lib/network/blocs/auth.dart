@@ -27,6 +27,9 @@ class AuthBloc{
     final BehaviorSubject _subjectUser = BehaviorSubject<User?>();
     BehaviorSubject<User?> get subjectUser => _subjectUser as BehaviorSubject<User?>;
 
+    final BehaviorSubject _subjectAuth = BehaviorSubject<ResponseAuthentication>();
+    BehaviorSubject<ResponseAuthentication?> get subjectAuth => _subjectAuth as BehaviorSubject<ResponseAuthentication>;
+
     setValue(key, value){
         _values[key] = value;
     }
@@ -78,6 +81,7 @@ class AuthBloc{
         _subjectRegister.close();
         _subjectUser.close();
         _subjectUpdatePassword.close();
+        _subjectAuth.close();
     }
 
   void saveUserAndToken(String token, User user) {
@@ -119,6 +123,47 @@ class AuthBloc{
           loadingBloc.end(LoadingType.updatePassword);
       });
   }
+
+  void auth() {
+      loadingBloc.start(LoadingType.login);
+      _api.auth(RequestAuth(username: "suryanarayana@flyhub.com",password: "test@12345")).then((value) {
+          _subjectAuth.sink.add(value);
+          loadingBloc.end(LoadingType.login);
+      }).catchError((error) {
+          print("LOGIN ERROR");
+          print(error);
+          loadingBloc.end(LoadingType.login);
+      });
+  }
+
+    void refresh() {
+
+        ResponseAuthentication response = _subjectAuth.value;
+        loadingBloc.start(LoadingType.login);
+        _api.refresh(RequestRefresh(token: response.token,refreshToken: response.refreshToken)).then((value) {
+            _subjectAuth.sink.add(value);
+            loadingBloc.end(LoadingType.login);
+            DioSingleton.instance.update(value.token);
+        }).catchError((error) {
+            print("LOGIN REFRESH");
+            print(error);
+            loadingBloc.end(LoadingType.login);
+        });
+    }
+
+    void deposit() {
+
+
+        loadingBloc.start(LoadingType.login);
+        _api.deposit().then((value) {
+
+            loadingBloc.end(LoadingType.login);
+        }).catchError((error) {
+            print("LOGIN Deposit");
+            print(error);
+            loadingBloc.end(LoadingType.login);
+        });
+    }
 }
 
 final authBloc = AuthBloc();

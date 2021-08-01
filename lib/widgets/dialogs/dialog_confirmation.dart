@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_template/imports.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/values/colors.dart';
-import 'package:flutter_template/widgets/buttons/default_button.dart';
 import 'package:flutter_template/widgets/text.dart';
 import 'package:flutter_template/widgets/widgets.dart';
 
@@ -40,14 +40,14 @@ class DialogConfirmation extends StatelessWidget {
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    xText(
+                    TextX(
                         text: title ?? "",
                         color: titleColor ?? ColorsX.textBlack,
                         fontSize: scale.size(24)),
                     margin(y: 20),
                     Container(
                       width: blocks.getWidth(),
-                      child: xText(
+                      child: TextX(
                           textAlign: TextAlign.center,
                           text: message,
                           color: ColorsX.textGrey,
@@ -58,11 +58,9 @@ class DialogConfirmation extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Expanded(
-                          child: DefaultButton(
-                              text: 'Cancel',
+                          child: LoaderButton(
+                              label: 'Cancel',
                               height: blocks.size(30),
-                              color: Colors.white,
-                              strokeColor: ColorsX.accent,
                               textColor: ColorsX.accent,
                               onPressed: () {
                                 if (popScreen != null) {
@@ -74,12 +72,10 @@ class DialogConfirmation extends StatelessWidget {
                         ),
                         margin(x: 10),
                         Expanded(
-                          child: DefaultButton(
+                          child: LoaderButton(
                               height: blocks.size(30),
-                              text: buttonText,
-                              strokeColor: ColorsX.accent,
+                              label: buttonText ?? "",
                               textColor: Colors.white,
-                              color: ColorsX.accent,
                               onPressed: () {
                                 if (function != null) function!();
                                 Navigator.pop(context);

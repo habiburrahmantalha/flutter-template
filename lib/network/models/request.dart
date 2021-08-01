@@ -62,3 +62,42 @@ class RequestUpdatePassword {
   }
 }
 
+class RequestAuth {
+  String? username;
+  String? password;
+
+  RequestAuth({this.username, this.password});
+
+  RequestAuth.fromJson(Map<String, dynamic> json) {
+    username = json['username'];
+    password = json['password'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['username'] = this.username;
+    data['password'] = this.password;
+    return data;
+  }
+}
+
+class RequestRefresh {
+  String? token;
+  String? refreshToken;
+
+  RequestRefresh({this.token, this.refreshToken});
+
+  RequestRefresh.fromJson(Map<String, dynamic> json) {
+    token = json['token'];
+    refreshToken = json['refreshToken'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['token'] = this.token;
+    data['refreshToken'] = this.refreshToken;
+    return data;
+  }
+}
+
+
