@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_template/network/blocs/auth.dart';
 import 'package:flutter_template/network/blocs/loading.dart';
 import 'package:flutter_template/network/models/extension.dart';
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(backgroundColor: Colors.transparent, brightness: Brightness.light, elevation: 0,  leading: IconButton(
+      appBar: AppBar(backgroundColor: Colors.transparent, systemOverlayStyle: const SystemUiOverlayStyle(statusBarBrightness: Brightness.light), elevation: 0,  leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black),
         onPressed: () => Navigator.of(context).pop(),
       ),),

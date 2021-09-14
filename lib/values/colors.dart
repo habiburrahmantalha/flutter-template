@@ -36,8 +36,8 @@ class ColorsX{
   static const lightGreyBlue = const Color(0xffb3bec5);
   static const cerulean = const Color(0xff00a2da);
 
-  static const Color greyFA = Color(0xffFAFAFA);
-  static const Color greyDE = Color(0xffDEDEDE);
+  static const Color greyEA = Color(0xffEAEAEA);
+  static const Color greyD8 = Color(0xffD8D8D8);
   static const Color greyF6 = Color(0xffF6F6F6);
   static const Color greyF2 = Color(0xffF2F2F2);
   static const Color greyBD = Color(0xffBDBDBD);

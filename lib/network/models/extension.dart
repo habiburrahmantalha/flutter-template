@@ -75,7 +75,7 @@ extension StringExtension on String{
 
 extension DateHelpers on DateTime {
 	bool get isToday {
-		final now = DateTime.now();
+		final now = DateTime.now().toLocal();
 		return now.day == this.day &&
 				now.month == this.month &&
 				now.year == this.year;
@@ -103,6 +103,10 @@ extension DateHelpers on DateTime {
 			return false;
 		}
 
+	}
+
+	String toDateTimeString(String format){
+		return DateFormat(format).format(this);
 	}
 
 	bool isTomorrow() {

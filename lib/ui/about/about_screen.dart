@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_template/res.dart';
 import 'package:flutter_template/utils/objects.dart';
 import 'package:flutter_template/utils/version_info.dart';
@@ -34,7 +35,7 @@ class _AboutScreenState extends State<AboutScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          brightness: Brightness.light,
+            systemOverlayStyle: const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
           elevation: 0,
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black),

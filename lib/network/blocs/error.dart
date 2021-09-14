@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_template/network/blocs/input.dart';
 import 'package:flutter_template/network/models/enum.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:tuple/tuple.dart';
@@ -8,8 +9,10 @@ class ErrorBloc{
     final PublishSubject<Tuple2<dynamic, ErrorType>> _subjectError = PublishSubject<Tuple2<dynamic, ErrorType>>();
     PublishSubject<Tuple2<dynamic, ErrorType>> get subjectError => _subjectError;
 
-    final PublishSubject<String> _subjectErrorText = PublishSubject<String>();
-    PublishSubject<String> get subjectErrorText => _subjectErrorText;
+    final PublishSubject<Map<InputFrom , String>> _subjectErrorText = PublishSubject<Map<InputFrom , String>>();
+    PublishSubject<Map<InputFrom , String>> get subjectErrorText => _subjectErrorText;
+
+    Map<InputFrom , String> _mapError = Map();
 
     handleError(DioError error, ErrorType type){
         switch(error.type){
@@ -41,8 +44,14 @@ class ErrorBloc{
         _subjectErrorText.close();
     }
 
-    showError(String text){
-        _subjectErrorText.sink.add(text);
+    showError(InputFrom from, String text){
+        _mapError[from] = text;
+        _subjectErrorText.sink.add(_mapError);
+    }
+
+    clearError(InputFrom from){
+        _mapError.remove(from);
+        _subjectErrorText.sink.add(_mapError);
     }
 }
 final errorBloc = ErrorBloc();

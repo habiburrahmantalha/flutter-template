@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_template/res.dart';
 import 'package:flutter_template/ui/about/about_screen.dart';
 import 'package:flutter_template/ui/profile/ProfileScreen.dart';
@@ -41,7 +42,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        brightness: Brightness.light,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
         elevation: 0,
         title: TextX(text: "Settings", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
         centerTitle: true,

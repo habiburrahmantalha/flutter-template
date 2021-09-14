@@ -43,7 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> with
       backgroundColor: Colors.white,
       // appBar: AppBar(
       //   backgroundColor: Colors.transparent,
-      //   brightness: Brightness.light,
+      //   systemOverlayStyle: const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
       //   elevation: 0,
       //   title: TextX(text: "Select plan", color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17.0),
       //   centerTitle: true,

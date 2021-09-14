@@ -40,3 +40,15 @@ class AuthApi {
     }
 
 }
+
+enum AuthStatus{
+    register, socialRegister, login, errorMobileExists, error
+}
+class AuthResult {
+    AuthStatus? status;
+    String? message;
+
+    String? route;
+
+    AuthResult({this.status, this.message, this.route});
+}

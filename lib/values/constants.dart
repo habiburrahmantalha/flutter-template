@@ -15,6 +15,7 @@ class InputKeys{
   static String newPassword= "new_password";
   static String confirmPassword= "confirm_password";
   static String mobile = "phone";
+  static String name = "name";
   static String mobileCode = "code";
   static String firstName = "first_name";
   static String lastName = "last_name";

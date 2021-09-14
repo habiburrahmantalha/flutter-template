@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/imports.dart';
 
 enum DecorationType{
-  gradiant, disable
+  enable, disable, white_stroke, black
 }
 
 class LoaderButton extends StatelessWidget {
@@ -17,62 +17,68 @@ class LoaderButton extends StatelessWidget {
   final double? radius;
   final double? verticalPadding;
   final bool hideTextOnLoading;
+  final DecorationType decorationType;
 
   LoaderButton(
       {Key? key,
         required this.onPressed,
         required this.label,
-          this.icon,
+        this.icon,
         this.radius,
         this.isLoading = false,
         this.width,
         this.verticalPadding,
         this.hideTextOnLoading = false,
-        this.height, this.textColor = Colors.black, this.isEnabled = true})
+        this.height, this.textColor = Colors.black, this.isEnabled = true, this.decorationType = DecorationType.enable})
       : super(key: key);
 
 
   getDecoration(bool isEnabled) {
-    DecorationType type = isEnabled ? DecorationType.gradiant : DecorationType.disable;
+    DecorationType type = isEnabled ? decorationType : DecorationType.disable;
     switch(type){
-      case DecorationType.gradiant:
+      case DecorationType.enable:
         return BoxDecoration(
-            borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
-            gradient: LinearGradient (
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                ColorsX.primary_button_start,
-                ColorsX.primary_button_end,
-              ],
-            )
+          borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+          color: ColorsX.blueyGrey,
         );
       case DecorationType.disable:
         return BoxDecoration(
-            borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
-            color: Colors.transparent,
-            border: Border.all(width: 1, color: ColorsX.white_40)
-
+          borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+          color: ColorsX.greyEA,
+        );
+      case DecorationType.white_stroke:
+        return BoxDecoration(
+          borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+          border: Border.all(color: ColorsX.greyD8 , width: 1),
+          color: ColorsX.white,
+        );
+      case DecorationType.black:
+        return BoxDecoration(
+          borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
+          border: Border.all(color: ColorsX.black , width: 1),
+          color: ColorsX.black,
         );
     }
   }
 
   getTextColor(bool isEnabled) {
-    DecorationType type = isEnabled ? DecorationType.gradiant : DecorationType.disable;
+    DecorationType type = isEnabled ? decorationType : DecorationType.disable;
     switch(type){
-      case DecorationType.gradiant:
-        return Colors.white;
+      case DecorationType.black:
+      case DecorationType.enable:
       case DecorationType.disable:
-        return ColorsX.white_40;
+        return ColorsX.white;
+      case DecorationType.white_stroke:
+        return ColorsX.black;
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius ?? Values.buttonRadius()),
       child: Material(
-          color: Colors.transparent,
+        //color: Colors.transparent,
           child: InkWell(
             onTap: isLoading || !isEnabled? () {} : onPressed,
             child: Opacity(
@@ -93,7 +99,7 @@ class LoaderButton extends StatelessWidget {
                             margin(x:12),
                             icon != null && icon!.isNotEmpty
                                 ? Image.asset(icon!, width: scale.size(24),)
-                                : Container(width: blocks.size(24),),
+                                : Container(width: 24.0.toWidthScale,),
                           ],
                         ),
                       ),
@@ -106,8 +112,8 @@ class LoaderButton extends StatelessWidget {
                             TextX(
                               text: label,
                               color: getTextColor(isEnabled),
-                              fontSize: scale.size(18),
-                              fontWeight: FontWeight.w600,
+                              fontSize: scale.size(17),
+                              fontWeight: FontWeight.w400,
                               textAlign: TextAlign.center,
                             ),
                           ],
@@ -120,7 +126,7 @@ class LoaderButton extends StatelessWidget {
                           children: [
                             isLoading
                                 ? LoadingIndicator()
-                                : Container(width: blocks.size(24),)
+                                : Container(width: 24.0.toWidthScale,)
                           ],
                         ),
                       )

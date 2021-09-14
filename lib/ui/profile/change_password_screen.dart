@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_template/network/blocs/auth.dart';
 import 'package:flutter_template/network/blocs/loading.dart';
 import 'package:flutter_template/utils/objects.dart';
@@ -37,7 +38,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
         backgroundColor: Colors.transparent,
-        brightness: Brightness.light,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
         elevation: 0,
         leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_outlined, color: Colors.black),
