@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/fcm/push_nofitications.dart';
 import 'package:flutter_template/network/blocs/auth.dart';
 import 'package:flutter_template/network/models/enum.dart';
@@ -52,9 +52,9 @@ class _SplashScreenState extends State<SplashScreen>
   void setBlockConfig() {
     blocks.init(context);
     scale.init(context);
-    ScreenUtil.init(BoxConstraints(
-      maxWidth: BlockConfiguration.screenWidth!,
-      maxHeight: BlockConfiguration.screenHeight!,));
+    // ScreenUtil.init(BoxConstraints(
+    //   maxWidth: BlockConfiguration.screenWidth!,
+    //   maxHeight: BlockConfiguration.screenHeight!,));
   }
 
   @override

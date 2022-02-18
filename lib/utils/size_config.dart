@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+//import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_template/utils/utils.dart';
 
 class BlockConfiguration {
@@ -36,40 +36,42 @@ class BlockConfiguration {
   }
 
   double size(double blocks) {
-    return blockSizeHorizontal! * blocks * getX();
+    return blocks;
+    //return blockSizeHorizontal! * blocks * getX();
   }
 
   double vertical(double blocks) {
-    return blockSizeHorizontal! * blocks * getY();
+    return blocks;
+    //return blockSizeHorizontal! * blocks * getY();
   }
 
-  num getX() {
-    var deviceType = getDeviceType(_mediaQueryData!.size);
-    var value;
-    switch (deviceType) {
-      case DeviceScreenType.mobile:
-        value = 0.28;
-        break;
-      default:
-        value = 0.20;
-        break;
-    }
-    return value;
-  }
+  // num getX() {
+  //   var deviceType = getDeviceType(_mediaQueryData!.size);
+  //   var value;
+  //   switch (deviceType) {
+  //     case DeviceScreenType.mobile:
+  //       value = 0.28;
+  //       break;
+  //     default:
+  //       value = 0.20;
+  //       break;
+  //   }
+  //   return value;
+  // }
 
-  num getY() {
-    var deviceType = getDeviceType(_mediaQueryData!.size);
-    var value;
-    switch (deviceType) {
-      case DeviceScreenType.mobile:
-        value = 0.32;
-        break;
-      default:
-        value = 0.20;
-        break;
-    }
-    return value;
-  }
+  // num getY() {
+  //   var deviceType = getDeviceType(_mediaQueryData!.size);
+  //   var value;
+  //   switch (deviceType) {
+  //     case DeviceScreenType.mobile:
+  //       value = 0.32;
+  //       break;
+  //     default:
+  //       value = 0.20;
+  //       break;
+  //   }
+  //   return value;
+  // }
 }
 
 class ScalingConfiguration {
@@ -80,12 +82,13 @@ class ScalingConfiguration {
   }
 
   double size(double size) {
-    var deviceType = getDeviceType(_mediaQueryData.size);
-    switch (deviceType) {
-      case DeviceScreenType.mobile:
-        return ScreenUtil().setSp(size/1.10);
-      default:
-        return ScreenUtil().setSp(size);
-    }
+    return size;
+    // var deviceType = getDeviceType(_mediaQueryData.size);
+    // switch (deviceType) {
+    //   case DeviceScreenType.mobile:
+    //     return ScreenUtil().setSp(size/1.10);
+    //   default:
+    //     return ScreenUtil().setSp(size);
+    // }
   }
 }

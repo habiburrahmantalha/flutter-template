@@ -1,16 +1,7 @@
 import 'dart:async';
-
-import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_logger/dio_logger.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_template/network/blocs/auth.dart';
-import 'package:flutter_template/network/endpoints.dart';
-import 'package:flutter_template/network/models/request.dart';
-import 'package:flutter_template/network/models/response.dart';
-import 'package:flutter_template/utils/retry_interceptor.dart';
-import 'package:fresh_dio/fresh_dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
 import 'network_connectivity.dart';
 import 'objects.dart';
 
@@ -39,7 +30,7 @@ class DioSingleton {
   String tag = "API call :";
 
   void update(String? auth) {
-    BaseOptions options = new BaseOptions(
+    BaseOptions options = BaseOptions(
       headers: {
         "Authorization": "Bearer $auth",
         "Accept":"application/json",
@@ -54,7 +45,7 @@ class DioSingleton {
   }
 
   void create() {
-    BaseOptions options = new BaseOptions(
+    BaseOptions options = BaseOptions(
       headers: {
         "Accept":"application/json",
         "Content-Type":"application/json",
@@ -65,16 +56,10 @@ class DioSingleton {
       followRedirects: false,
     );
 
-    dio = new Dio(options);
+    dio = Dio(options);
 
     dio.interceptors
-      ..add(PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseBody: false,
-          responseHeader: true,
-          error: true,
-          compact: false))
+      ..add(dioLoggerInterceptor)
       ..add(InterceptorsWrapper(
         onRequest: (options, handler) {
           networkConnectivity.checkStatus();
