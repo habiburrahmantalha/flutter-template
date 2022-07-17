@@ -27,39 +27,33 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.4
-  shared_preferences: ^2.0.13
-  dio: ^4.0.4
-  rxdart: ^0.27.3
-  fluttertoast: ^8.0.8
+  cupertino_icons: ^1.0.5
+  shared_preferences: ^2.0.15
+  dio: ^4.0.6
+  rxdart: ^0.27.5
+  fluttertoast: ^8.0.9
   package_info: ^2.0.2
   connectivity: ^3.0.6
   flutter_device_type: ^0.4.0
   shimmer: ^2.0.0
-  webview_flutter: ^2.0.13
-  flutter_html: ^2.1.2
-  cached_network_image: ^3.2.0
-  geolocator: ^7.6.0
-  location: ^4.3.0
-  url_launcher: ^6.0.20
+  webview_flutter: ^2.0.4
+  flutter_html: ^2.2.1
+  cached_network_image: ^3.2.1
+  geolocator: ^9.0.1
+  location: ^4.4.0
+  url_launcher: ^6.1.5
   device_info: ^2.0.3
   smooth_page_indicator: ^1.0.0+2
-  pin_code_fields: ^7.3.0
+  pin_code_fields: ^7.4.0
   enum_to_string: ^2.0.1
-  provider: ^5.0.0
-  get_it: ^7.1.2
-#  flutter_screenutil: ^5.0.0+2
-#  responsive_builder: ^0.4.1
   tuple: ^2.0.0
-#  pretty_dio_logger: ^1.2.0-beta-1
-  #progressive_image: ^1.0.1
   dio_logger: ^4.0.8+8
-  sign_in_with_apple: ^3.3.0
-  firebase_crashlytics: ^2.5.1
-  firebase_messaging: ^11.2.6
+  sign_in_with_apple: ^4.0.0
+  firebase_crashlytics: ^2.8.5
+  firebase_messaging: ^12.0.0
   firebase_core: ^1.12.0
-  firebase_analytics: ^9.1.0
-  fresh_dio: ^0.3.1
+  firebase_analytics: ^9.2.0
+  fresh_dio: ^0.3.2
   launch_review: ^3.0.1
   intl: ^0.17.0
 

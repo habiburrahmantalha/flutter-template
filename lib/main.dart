@@ -22,15 +22,13 @@ import 'package:flutter_template/utils/sharedpreference.dart';
 import 'package:flutter_template/values/colors.dart';
 import 'package:provider/provider.dart';
 
-import 'locator.dart';
+
 import 'services/navigation_service.dart';
 import 'ui/splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  setupLocator();
-
 
   runZonedGuarded(() {
     runApp(MyApp());
@@ -70,12 +68,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.white, // Color for Android
         statusBarBrightness: Brightness.light));
 
     return MaterialApp(
-      navigatorKey: locator<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       builder: (context, child) {
         return ScrollConfiguration(
@@ -86,7 +83,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Lato',
-        pageTransitionsTheme: PageTransitionsTheme(builders: {
+        pageTransitionsTheme: const PageTransitionsTheme(builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         }),

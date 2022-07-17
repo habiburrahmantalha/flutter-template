@@ -39,6 +39,8 @@ class LocationServiceBloc {
         case LocationPermission.whileInUse:
         case LocationPermission.always:
           return true;
+        default:
+           return false;
       }
   }
 
@@ -69,9 +71,10 @@ class LocationServiceBloc {
     print("Location###getCurrentLocation");
     try {
       _positionStream = Geolocator.getPositionStream(
-          desiredAccuracy: LocationAccuracy.best,
-          distanceFilter: 10,
-          intervalDuration: Duration(milliseconds: 10)).listen((Position position) {
+          locationSettings: const LocationSettings(
+              distanceFilter: 10,
+              accuracy: LocationAccuracy.best,timeLimit: Duration(milliseconds: 10)
+          )).listen((Position position) {
         print("Location###getCurrentLocation ${position.toJson()}");
         // locationBloc.setCurrentLocationPosition(position);
         _positionStream.cancel();
